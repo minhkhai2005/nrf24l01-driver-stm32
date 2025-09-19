@@ -1,0 +1,183 @@
+\doxysection{nrf24l01\+\_\+device Struct Reference}
+\hypertarget{structnrf24l01__device}{}\label{structnrf24l01__device}\index{nrf24l01\_device@{nrf24l01\_device}}
+
+
+Main n\+RF24\+L01 device configuration structure.  
+
+
+
+
+{\ttfamily \#include $<$nrf24l01.\+h$>$}
+
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+SPI\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structnrf24l01__device_a7c47ab6b83fb560e7460fa89c4523e09}{spi}}
+\item 
+\Hypertarget{structnrf24l01__device_ad281e60ed78cb5f04a66714ffebfcb9f}\label{structnrf24l01__device_ad281e60ed78cb5f04a66714ffebfcb9f} 
+GPIO\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*} {\bfseries irq\+\_\+port}
+\item 
+\Hypertarget{structnrf24l01__device_a6eb6aeb6824bfe790f6ffb708f1337ca}\label{structnrf24l01__device_a6eb6aeb6824bfe790f6ffb708f1337ca} 
+GPIO\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*} {\bfseries ce\+\_\+port}
+\item 
+GPIO\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structnrf24l01__device_a9adb103a156701c367f27ea75c193782}{csn\+\_\+port}}
+\item 
+\Hypertarget{structnrf24l01__device_a4170c0d39b4c541591524df5eefd5796}\label{structnrf24l01__device_a4170c0d39b4c541591524df5eefd5796} 
+uint8\+\_\+t {\bfseries irq\+\_\+pin}
+\item 
+\Hypertarget{structnrf24l01__device_a620aa21416ea66c0013ac7c0dae02ab2}\label{structnrf24l01__device_a620aa21416ea66c0013ac7c0dae02ab2} 
+uint8\+\_\+t {\bfseries ce\+\_\+pin}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structnrf24l01__device_aa5dcec097d6d7f9bf501eda66cf77022}{csn\+\_\+pin}}
+\item 
+TIM\+\_\+\+Handle\+Type\+Def \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structnrf24l01__device_a8eda636f108c5827e88a8ac872bf72c2}{timer}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structnrf24l01__device_ab46d59549b62cde77d6d4fe02d764535}{power\+\_\+up}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structnrf24l01__device_ad6235a8559db2fe7a143e8fc564ae78f}{primary\+\_\+rx}}
+\item 
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga9d8202711d7010b3f17cfb7abc9820ed}{nrf24l01\+\_\+address\+\_\+width}} \mbox{\hyperlink{structnrf24l01__device_a6143d5bf20252d6cc0156f0854aa32d1}{address\+\_\+width}}
+\item 
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga816f505b2c3ea97c09731b441dae4db6}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay}} \mbox{\hyperlink{structnrf24l01__device_a0e009cba0cbfca35d1e67c51e7368aeb}{auto\+\_\+retransmit\+\_\+delay}}
+\item 
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gad8ffddaf2b07a103805f32ad3a50b50f}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count}} \mbox{\hyperlink{structnrf24l01__device_a8cd21461ac614041c1fa6030152b08d2}{auto\+\_\+retransmit\+\_\+count}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structnrf24l01__device_a60fa5af0a1d44ca1dae74df32de401c2}{frequency\+\_\+channel}}
+\item 
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga543c6edfa643a5439fb2309d570d2538}{nrf24l01\+\_\+air\+\_\+data\+\_\+rate}} \mbox{\hyperlink{structnrf24l01__device_a987d6661ef478812fda0df9616ca1f76}{air\+\_\+data\+\_\+rate}}
+\item 
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga935205f670283e8df8329bb93e2f20b2}{nrf24l01\+\_\+rf\+\_\+output\+\_\+power}} \mbox{\hyperlink{structnrf24l01__device_a36b8eb68be635895962d329b4d4eae16}{rf\+\_\+output\+\_\+power}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structnrf24l01__device_adba66418e6d09c2ca2419c201705a26c}{setup\+\_\+lna\+\_\+gain}}
+\item 
+\mbox{\hyperlink{structnrf24l01__data__pipe}{nrf24l01\+\_\+data\+\_\+pipe}} \mbox{\hyperlink{structnrf24l01__device_a89df85feca9c9cb5074d9654d8f443be}{data\+\_\+pipe}} \mbox{[}6\mbox{]}
+\item 
+uint8\+\_\+t \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{structnrf24l01__device_a78af98b226aaf5b67e9110e7cc37abaf}{transmit\+\_\+address}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structnrf24l01__device_a12eac93e62939d136622b1aeed88dabe}{dynamic\+\_\+payload\+\_\+length\+\_\+enable}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structnrf24l01__device_ac6e174857341d886bf2dc70889fd575e}{payload\+\_\+with\+\_\+ack\+\_\+enable}}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{structnrf24l01__device_a52efd73a1efade71fa37ecd49563ac4b}{dynamic\+\_\+ack\+\_\+enable}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Main n\+RF24\+L01 device configuration structure. 
+
+\label{doc-variable-members}
+\Hypertarget{structnrf24l01__device_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structnrf24l01__device_a6143d5bf20252d6cc0156f0854aa32d1}\index{nrf24l01\_device@{nrf24l01\_device}!address\_width@{address\_width}}
+\index{address\_width@{address\_width}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{address\_width}{address\_width}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a6143d5bf20252d6cc0156f0854aa32d1} 
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga9d8202711d7010b3f17cfb7abc9820ed}{nrf24l01\+\_\+address\+\_\+width}} nrf24l01\+\_\+device\+::address\+\_\+width}
+
+Address width configuration \Hypertarget{structnrf24l01__device_a987d6661ef478812fda0df9616ca1f76}\index{nrf24l01\_device@{nrf24l01\_device}!air\_data\_rate@{air\_data\_rate}}
+\index{air\_data\_rate@{air\_data\_rate}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{air\_data\_rate}{air\_data\_rate}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a987d6661ef478812fda0df9616ca1f76} 
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga543c6edfa643a5439fb2309d570d2538}{nrf24l01\+\_\+air\+\_\+data\+\_\+rate}} nrf24l01\+\_\+device\+::air\+\_\+data\+\_\+rate}
+
+Air data rate setting \Hypertarget{structnrf24l01__device_a8cd21461ac614041c1fa6030152b08d2}\index{nrf24l01\_device@{nrf24l01\_device}!auto\_retransmit\_count@{auto\_retransmit\_count}}
+\index{auto\_retransmit\_count@{auto\_retransmit\_count}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{auto\_retransmit\_count}{auto\_retransmit\_count}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a8cd21461ac614041c1fa6030152b08d2} 
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gad8ffddaf2b07a103805f32ad3a50b50f}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count}} nrf24l01\+\_\+device\+::auto\+\_\+retransmit\+\_\+count}
+
+Auto retransmit count \Hypertarget{structnrf24l01__device_a0e009cba0cbfca35d1e67c51e7368aeb}\index{nrf24l01\_device@{nrf24l01\_device}!auto\_retransmit\_delay@{auto\_retransmit\_delay}}
+\index{auto\_retransmit\_delay@{auto\_retransmit\_delay}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{auto\_retransmit\_delay}{auto\_retransmit\_delay}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a0e009cba0cbfca35d1e67c51e7368aeb} 
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga816f505b2c3ea97c09731b441dae4db6}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay}} nrf24l01\+\_\+device\+::auto\+\_\+retransmit\+\_\+delay}
+
+Auto retransmit delay \Hypertarget{structnrf24l01__device_aa5dcec097d6d7f9bf501eda66cf77022}\index{nrf24l01\_device@{nrf24l01\_device}!csn\_pin@{csn\_pin}}
+\index{csn\_pin@{csn\_pin}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{csn\_pin}{csn\_pin}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_aa5dcec097d6d7f9bf501eda66cf77022} 
+uint8\+\_\+t nrf24l01\+\_\+device\+::csn\+\_\+pin}
+
+GPIO pin numbers \Hypertarget{structnrf24l01__device_a9adb103a156701c367f27ea75c193782}\index{nrf24l01\_device@{nrf24l01\_device}!csn\_port@{csn\_port}}
+\index{csn\_port@{csn\_port}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{csn\_port}{csn\_port}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a9adb103a156701c367f27ea75c193782} 
+GPIO\+\_\+\+Type\+Def \texorpdfstring{$\ast$}{*} nrf24l01\+\_\+device\+::csn\+\_\+port}
+
+GPIO ports for control pins \Hypertarget{structnrf24l01__device_a89df85feca9c9cb5074d9654d8f443be}\index{nrf24l01\_device@{nrf24l01\_device}!data\_pipe@{data\_pipe}}
+\index{data\_pipe@{data\_pipe}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{data\_pipe}{data\_pipe}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a89df85feca9c9cb5074d9654d8f443be} 
+\mbox{\hyperlink{structnrf24l01__data__pipe}{nrf24l01\+\_\+data\+\_\+pipe}} nrf24l01\+\_\+device\+::data\+\_\+pipe\mbox{[}6\mbox{]}}
+
+Configuration for all 6 data pipes \Hypertarget{structnrf24l01__device_a52efd73a1efade71fa37ecd49563ac4b}\index{nrf24l01\_device@{nrf24l01\_device}!dynamic\_ack\_enable@{dynamic\_ack\_enable}}
+\index{dynamic\_ack\_enable@{dynamic\_ack\_enable}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{dynamic\_ack\_enable}{dynamic\_ack\_enable}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a52efd73a1efade71fa37ecd49563ac4b} 
+uint8\+\_\+t nrf24l01\+\_\+device\+::dynamic\+\_\+ack\+\_\+enable}
+
+Dynamic ACK enable \Hypertarget{structnrf24l01__device_a12eac93e62939d136622b1aeed88dabe}\index{nrf24l01\_device@{nrf24l01\_device}!dynamic\_payload\_length\_enable@{dynamic\_payload\_length\_enable}}
+\index{dynamic\_payload\_length\_enable@{dynamic\_payload\_length\_enable}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{dynamic\_payload\_length\_enable}{dynamic\_payload\_length\_enable}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a12eac93e62939d136622b1aeed88dabe} 
+uint8\+\_\+t nrf24l01\+\_\+device\+::dynamic\+\_\+payload\+\_\+length\+\_\+enable}
+
+Global dynamic payload enable \Hypertarget{structnrf24l01__device_a60fa5af0a1d44ca1dae74df32de401c2}\index{nrf24l01\_device@{nrf24l01\_device}!frequency\_channel@{frequency\_channel}}
+\index{frequency\_channel@{frequency\_channel}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{frequency\_channel}{frequency\_channel}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a60fa5af0a1d44ca1dae74df32de401c2} 
+uint8\+\_\+t nrf24l01\+\_\+device\+::frequency\+\_\+channel}
+
+RF frequency channel (0-\/125) \Hypertarget{structnrf24l01__device_ac6e174857341d886bf2dc70889fd575e}\index{nrf24l01\_device@{nrf24l01\_device}!payload\_with\_ack\_enable@{payload\_with\_ack\_enable}}
+\index{payload\_with\_ack\_enable@{payload\_with\_ack\_enable}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{payload\_with\_ack\_enable}{payload\_with\_ack\_enable}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_ac6e174857341d886bf2dc70889fd575e} 
+uint8\+\_\+t nrf24l01\+\_\+device\+::payload\+\_\+with\+\_\+ack\+\_\+enable}
+
+Payload with ACK enable \Hypertarget{structnrf24l01__device_ab46d59549b62cde77d6d4fe02d764535}\index{nrf24l01\_device@{nrf24l01\_device}!power\_up@{power\_up}}
+\index{power\_up@{power\_up}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{power\_up}{power\_up}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_ab46d59549b62cde77d6d4fe02d764535} 
+uint8\+\_\+t nrf24l01\+\_\+device\+::power\+\_\+up}
+
+Power state (0=down, 1=up) \Hypertarget{structnrf24l01__device_ad6235a8559db2fe7a143e8fc564ae78f}\index{nrf24l01\_device@{nrf24l01\_device}!primary\_rx@{primary\_rx}}
+\index{primary\_rx@{primary\_rx}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{primary\_rx}{primary\_rx}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_ad6235a8559db2fe7a143e8fc564ae78f} 
+uint8\+\_\+t nrf24l01\+\_\+device\+::primary\+\_\+rx}
+
+Primary mode (0=TX, 1=RX) \Hypertarget{structnrf24l01__device_a36b8eb68be635895962d329b4d4eae16}\index{nrf24l01\_device@{nrf24l01\_device}!rf\_output\_power@{rf\_output\_power}}
+\index{rf\_output\_power@{rf\_output\_power}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{rf\_output\_power}{rf\_output\_power}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a36b8eb68be635895962d329b4d4eae16} 
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga935205f670283e8df8329bb93e2f20b2}{nrf24l01\+\_\+rf\+\_\+output\+\_\+power}} nrf24l01\+\_\+device\+::rf\+\_\+output\+\_\+power}
+
+RF output power level \Hypertarget{structnrf24l01__device_adba66418e6d09c2ca2419c201705a26c}\index{nrf24l01\_device@{nrf24l01\_device}!setup\_lna\_gain@{setup\_lna\_gain}}
+\index{setup\_lna\_gain@{setup\_lna\_gain}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{setup\_lna\_gain}{setup\_lna\_gain}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_adba66418e6d09c2ca2419c201705a26c} 
+uint8\+\_\+t nrf24l01\+\_\+device\+::setup\+\_\+lna\+\_\+gain}
+
+LNA gain setting \Hypertarget{structnrf24l01__device_a7c47ab6b83fb560e7460fa89c4523e09}\index{nrf24l01\_device@{nrf24l01\_device}!spi@{spi}}
+\index{spi@{spi}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{spi}{spi}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a7c47ab6b83fb560e7460fa89c4523e09} 
+SPI\+\_\+\+Handle\+Type\+Def\texorpdfstring{$\ast$}{*} nrf24l01\+\_\+device\+::spi}
+
+SPI handle for communication \Hypertarget{structnrf24l01__device_a8eda636f108c5827e88a8ac872bf72c2}\index{nrf24l01\_device@{nrf24l01\_device}!timer@{timer}}
+\index{timer@{timer}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{timer}{timer}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a8eda636f108c5827e88a8ac872bf72c2} 
+TIM\+\_\+\+Handle\+Type\+Def\texorpdfstring{$\ast$}{*} nrf24l01\+\_\+device\+::timer}
+
+Timer handle for microsecond delays \Hypertarget{structnrf24l01__device_a78af98b226aaf5b67e9110e7cc37abaf}\index{nrf24l01\_device@{nrf24l01\_device}!transmit\_address@{transmit\_address}}
+\index{transmit\_address@{transmit\_address}!nrf24l01\_device@{nrf24l01\_device}}
+\doxysubsubsection{\texorpdfstring{transmit\_address}{transmit\_address}}
+{\footnotesize\ttfamily \label{structnrf24l01__device_a78af98b226aaf5b67e9110e7cc37abaf} 
+uint8\+\_\+t\texorpdfstring{$\ast$}{*} nrf24l01\+\_\+device\+::transmit\+\_\+address}
+
+Transmit address 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{nrf24l01_8h}{nrf24l01.\+h}}\end{DoxyCompactItemize}

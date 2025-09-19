@@ -1,0 +1,141 @@
+\doxysubsection{Low Level Functions }
+\hypertarget{group___n_r_f24_l01___l_o_w___l_e_v_e_l}{}\label{group___n_r_f24_l01___l_o_w___l_e_v_e_l}\index{Low Level Functions@{Low Level Functions}}
+
+
+Hardware abstraction and low-\/level communication functions.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_gabb08dd9573abd55c08fab1ea34f13c08}{nrf24l01\+\_\+delay}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint16\+\_\+t us)
+\begin{DoxyCompactList}\small\item\em Generate microsecond delay. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga7d07306b43d1be8d52de88df78e7a81f}{nrf24l01\+\_\+chip\+\_\+select}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Select n\+RF24\+L01 chip (CSN low) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga59d940b996f1d15d7e72031b9af6ba55}{nrf24l01\+\_\+chip\+\_\+deselect}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Deselect n\+RF24\+L01 chip (CSN high) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga2a460c95a56915aae0e682bec28bdafb}{nrf24l01\+\_\+chip\+\_\+enable}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Enable n\+RF24\+L01 chip (CE high) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga453868646c931f32d3b9561e32f00e6e}{nrf24l01\+\_\+chip\+\_\+disable}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Disable n\+RF24\+L01 chip (CE low) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_gae046b212e91886418d20da15085166ec}{nrf24l01\+\_\+send\+\_\+command}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t command)
+\begin{DoxyCompactList}\small\item\em Send single byte command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Hardware abstraction and low-\/level communication functions. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group___n_r_f24_l01___l_o_w___l_e_v_e_l_doc-func-members}
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga59d940b996f1d15d7e72031b9af6ba55}\index{Low Level Functions@{Low Level Functions}!nrf24l01\_chip\_deselect@{nrf24l01\_chip\_deselect}}
+\index{nrf24l01\_chip\_deselect@{nrf24l01\_chip\_deselect}!Low Level Functions@{Low Level Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_chip\_deselect()}{nrf24l01\_chip\_deselect()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga59d940b996f1d15d7e72031b9af6ba55} 
+uint8\+\_\+t nrf24l01\+\_\+chip\+\_\+deselect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Deselect n\+RF24\+L01 chip (CSN high) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error 
+\end{DoxyReturn}
+\Hypertarget{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga453868646c931f32d3b9561e32f00e6e}\index{Low Level Functions@{Low Level Functions}!nrf24l01\_chip\_disable@{nrf24l01\_chip\_disable}}
+\index{nrf24l01\_chip\_disable@{nrf24l01\_chip\_disable}!Low Level Functions@{Low Level Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_chip\_disable()}{nrf24l01\_chip\_disable()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga453868646c931f32d3b9561e32f00e6e} 
+uint8\+\_\+t nrf24l01\+\_\+chip\+\_\+disable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Disable n\+RF24\+L01 chip (CE low) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error 
+\end{DoxyReturn}
+\Hypertarget{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga2a460c95a56915aae0e682bec28bdafb}\index{Low Level Functions@{Low Level Functions}!nrf24l01\_chip\_enable@{nrf24l01\_chip\_enable}}
+\index{nrf24l01\_chip\_enable@{nrf24l01\_chip\_enable}!Low Level Functions@{Low Level Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_chip\_enable()}{nrf24l01\_chip\_enable()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga2a460c95a56915aae0e682bec28bdafb} 
+uint8\+\_\+t nrf24l01\+\_\+chip\+\_\+enable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Enable n\+RF24\+L01 chip (CE high) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error 
+\end{DoxyReturn}
+\Hypertarget{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga7d07306b43d1be8d52de88df78e7a81f}\index{Low Level Functions@{Low Level Functions}!nrf24l01\_chip\_select@{nrf24l01\_chip\_select}}
+\index{nrf24l01\_chip\_select@{nrf24l01\_chip\_select}!Low Level Functions@{Low Level Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_chip\_select()}{nrf24l01\_chip\_select()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga7d07306b43d1be8d52de88df78e7a81f} 
+uint8\+\_\+t nrf24l01\+\_\+chip\+\_\+select (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Select n\+RF24\+L01 chip (CSN low) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error 
+\end{DoxyReturn}
+\Hypertarget{group___n_r_f24_l01___l_o_w___l_e_v_e_l_gabb08dd9573abd55c08fab1ea34f13c08}\index{Low Level Functions@{Low Level Functions}!nrf24l01\_delay@{nrf24l01\_delay}}
+\index{nrf24l01\_delay@{nrf24l01\_delay}!Low Level Functions@{Low Level Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_delay()}{nrf24l01\_delay()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___l_o_w___l_e_v_e_l_gabb08dd9573abd55c08fab1ea34f13c08} 
+void nrf24l01\+\_\+delay (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint16\+\_\+t}]{us}{}\end{DoxyParamCaption})}
+
+
+
+Generate microsecond delay. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em us} & Delay in microseconds\\
+\hline
+\end{DoxyParams}
+Uses the configured timer to generate precise microsecond delays. \Hypertarget{group___n_r_f24_l01___l_o_w___l_e_v_e_l_gae046b212e91886418d20da15085166ec}\index{Low Level Functions@{Low Level Functions}!nrf24l01\_send\_command@{nrf24l01\_send\_command}}
+\index{nrf24l01\_send\_command@{nrf24l01\_send\_command}!Low Level Functions@{Low Level Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_send\_command()}{nrf24l01\_send\_command()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___l_o_w___l_e_v_e_l_gae046b212e91886418d20da15085166ec} 
+uint8\+\_\+t nrf24l01\+\_\+send\+\_\+command (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t}]{command}{}\end{DoxyParamCaption})}
+
+
+
+Send single byte command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em command} & Command byte to send \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value 
+\end{DoxyReturn}

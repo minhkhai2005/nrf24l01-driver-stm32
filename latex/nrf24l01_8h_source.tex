@@ -1,0 +1,356 @@
+\doxysection{nrf24l01.\+h}
+\hypertarget{nrf24l01_8h_source}{}\label{nrf24l01_8h_source}\mbox{\hyperlink{nrf24l01_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#ifndef\ NRF24L01\_DRIVER\_NRF24L01\_H}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#define\ NRF24L01\_DRIVER\_NRF24L01\_H}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ <stdint.h>}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ "{}main.h"{}}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ "{}stm32f1xx\_hal.h"{}}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ EMPTY\_DATA\ \ \ (uint8\_t\ *)0xFF}}
+\DoxyCodeLine{00055\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_MACROS\ group}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#define\ CONFIG\ \ \ \ \ \ \ \ 0x00\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#define\ EN\_AA\ \ \ \ \ \ \ \ \ 0x01\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#define\ EN\_RXADDR\ \ \ \ \ 0x02\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00067\ \textcolor{preprocessor}{\#define\ SETUP\_AW\ \ \ \ \ \ 0x03\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#define\ SETUP\_RETR\ \ \ \ 0x04\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#define\ RF\_CH\ \ \ \ \ \ \ \ \ 0x05\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00070\ \textcolor{preprocessor}{\#define\ RF\_SETUP\ \ \ \ \ \ 0x06\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00071\ \textcolor{preprocessor}{\#define\ STATUS\ \ \ \ \ \ \ \ 0x07\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00072\ \textcolor{preprocessor}{\#define\ OBSERVE\_TX\ \ \ \ 0x08\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\#define\ PRD\ \ \ \ \ \ \ \ \ \ \ 0x09\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00074\ \textcolor{preprocessor}{\#define\ RX\_ADDR\_P0\ \ \ \ 0x0A\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00075\ \textcolor{preprocessor}{\#define\ RX\_ADDR\_P1\ \ \ \ 0x0B\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#define\ RX\_ADDR\_P2\ \ \ \ 0x0C\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#define\ RX\_ADDR\_P3\ \ \ \ 0x0D\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00078\ \textcolor{preprocessor}{\#define\ RX\_ADDR\_P4\ \ \ \ 0x0E\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00079\ \textcolor{preprocessor}{\#define\ RX\_ADDR\_P5\ \ \ \ 0x0F\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#define\ TX\_ADDR\ \ \ \ \ \ \ 0x10\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00081\ \textcolor{preprocessor}{\#define\ RX\_PW\_P0\ \ \ \ \ \ 0x11\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#define\ RX\_PW\_P1\ \ \ \ \ \ 0x12\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00083\ \textcolor{preprocessor}{\#define\ RX\_PW\_P2\ \ \ \ \ \ 0x13\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00084\ \textcolor{preprocessor}{\#define\ RX\_PW\_P3\ \ \ \ \ \ 0x14\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#define\ RX\_PW\_P4\ \ \ \ \ \ 0x15\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00086\ \textcolor{preprocessor}{\#define\ RX\_PW\_P5\ \ \ \ \ \ 0x16\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00087\ \textcolor{preprocessor}{\#define\ FIFO\_STATUS\ \ \ 0x17\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00088\ \textcolor{preprocessor}{\#define\ DYNPD\ \ \ \ \ \ \ \ \ 0x1C\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00089\ \textcolor{preprocessor}{\#define\ FEATURE\ \ \ \ \ \ \ 0x1D\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00090\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_REGISTERS\ group}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00098\ }
+\DoxyCodeLine{00099\ \textcolor{comment}{/*\ CONFIG\ Register\ Bits\ */}}
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#define\ MASK\_RX\_DR\ \ \ \ 0b01000000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#define\ MASK\_TX\_DS\ \ \ \ 0b00100000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00102\ \textcolor{preprocessor}{\#define\ MASK\_MAX\_RT\ \ \ 0b00010000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00103\ \textcolor{preprocessor}{\#define\ EN\_CRC\ \ \ \ \ \ \ \ 0b00001000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00104\ \textcolor{preprocessor}{\#define\ CRCO\ \ \ \ \ \ \ \ \ \ 0b00000100\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00105\ \textcolor{preprocessor}{\#define\ PWR\_UP\ \ \ \ \ \ \ \ 0b00000010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00106\ \textcolor{preprocessor}{\#define\ PRIM\_RX\ \ \ \ \ \ \ 0b00000001\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00108\ \textcolor{comment}{/*\ EN\_AA\ Register\ Bits\ */}}
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#define\ ENAA\_P5\ \ \ \ \ \ \ 0b00100000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00110\ \textcolor{preprocessor}{\#define\ ENAA\_P4\ \ \ \ \ \ \ 0b00010000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00111\ \textcolor{preprocessor}{\#define\ ENAA\_P3\ \ \ \ \ \ \ 0b00001000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00112\ \textcolor{preprocessor}{\#define\ ENAA\_P2\ \ \ \ \ \ \ 0b00000100\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00113\ \textcolor{preprocessor}{\#define\ ENAA\_P1\ \ \ \ \ \ \ 0b00000010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00114\ \textcolor{preprocessor}{\#define\ ENAA\_P0\ \ \ \ \ \ \ 0b00000001\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{comment}{/*\ EN\_RXADDR\ Register\ Bits\ */}}
+\DoxyCodeLine{00117\ \textcolor{preprocessor}{\#define\ ERX\_P5\ \ \ \ \ \ \ \ 0b00100000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00118\ \textcolor{preprocessor}{\#define\ ERX\_P4\ \ \ \ \ \ \ \ 0b00010000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00119\ \textcolor{preprocessor}{\#define\ ERX\_P3\ \ \ \ \ \ \ \ 0b00001000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00120\ \textcolor{preprocessor}{\#define\ ERX\_P2\ \ \ \ \ \ \ \ 0b00000100\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#define\ ERX\_P1\ \ \ \ \ \ \ \ 0b00000010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00122\ \textcolor{preprocessor}{\#define\ ERX\_P0\ \ \ \ \ \ \ \ 0b00000001\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \textcolor{comment}{/*\ SETUP\_AW\ Register\ Bits\ */}}
+\DoxyCodeLine{00125\ \textcolor{preprocessor}{\#define\ AW\ \ \ \ \ \ \ \ \ \ \ \ 0b00000011\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00126\ \textcolor{preprocessor}{\#define\ AW0\ \ \ \ \ \ \ \ \ \ \ 0b00000001\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00127\ \textcolor{preprocessor}{\#define\ AW1\ \ \ \ \ \ \ \ \ \ \ 0b00000010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00128\ }
+\DoxyCodeLine{00129\ \textcolor{comment}{/*\ SETUP\_RETR\ Register\ Bits\ */}}
+\DoxyCodeLine{00130\ \textcolor{preprocessor}{\#define\ ARD\ \ \ \ \ \ \ \ \ \ \ 0b11110000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00131\ \textcolor{preprocessor}{\#define\ ARD0\ \ \ \ \ \ \ \ \ \ 0b00010000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00132\ \textcolor{preprocessor}{\#define\ ARD1\ \ \ \ \ \ \ \ \ \ 0b00100000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00133\ \textcolor{preprocessor}{\#define\ ARD2\ \ \ \ \ \ \ \ \ \ 0b01000000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00134\ \textcolor{preprocessor}{\#define\ ARD3\ \ \ \ \ \ \ \ \ \ 0b10000000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00135\ \textcolor{preprocessor}{\#define\ ARC\ \ \ \ \ \ \ \ \ \ \ 0b00001111\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00136\ \textcolor{preprocessor}{\#define\ ARC0\ \ \ \ \ \ \ \ \ \ 0b00000001\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00137\ \textcolor{preprocessor}{\#define\ ARC1\ \ \ \ \ \ \ \ \ \ 0b00000010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00138\ \textcolor{preprocessor}{\#define\ ARC2\ \ \ \ \ \ \ \ \ \ 0b00000100\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00139\ \textcolor{preprocessor}{\#define\ ARC3\ \ \ \ \ \ \ \ \ \ 0b00001000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00140\ }
+\DoxyCodeLine{00141\ \textcolor{comment}{/*\ RF\_CH\ Register\ Bits\ */}}
+\DoxyCodeLine{00142\ \textcolor{preprocessor}{\#define\ RF\_CH0\ \ \ \ \ \ \ \ 0b00000001\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00143\ \textcolor{preprocessor}{\#define\ RF\_CH1\ \ \ \ \ \ \ \ 0b00000010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00144\ \textcolor{preprocessor}{\#define\ RF\_CH2\ \ \ \ \ \ \ \ 0b00000100\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00145\ \textcolor{preprocessor}{\#define\ RF\_CH3\ \ \ \ \ \ \ \ 0b00001000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00146\ \textcolor{preprocessor}{\#define\ RF\_CH4\ \ \ \ \ \ \ \ 0b00010000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00147\ \textcolor{preprocessor}{\#define\ RF\_CH5\ \ \ \ \ \ \ \ 0b00100000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00148\ \textcolor{preprocessor}{\#define\ RF\_CH6\ \ \ \ \ \ \ \ 0b01000000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00149\ }
+\DoxyCodeLine{00150\ \textcolor{comment}{/*\ RF\_SETUP\ Register\ Bits\ */}}
+\DoxyCodeLine{00151\ \textcolor{preprocessor}{\#define\ PLL\_LOCK\ \ \ \ \ \ 0b00010000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00152\ \textcolor{preprocessor}{\#define\ RF\_DR\ \ \ \ \ \ \ \ \ 0b00001000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00153\ \textcolor{preprocessor}{\#define\ RF\_PWR\ \ \ \ \ \ \ \ 0b00000110\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00154\ \textcolor{preprocessor}{\#define\ RF\_PWR0\ \ \ \ \ \ \ 0b00000010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00155\ \textcolor{preprocessor}{\#define\ RF\_PWR1\ \ \ \ \ \ \ 0b00000100\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00156\ \textcolor{preprocessor}{\#define\ LNA\_HCURR\ \ \ \ \ 0b00000001\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00158\ \textcolor{comment}{/*\ STATUS\ Register\ Bits\ */}}
+\DoxyCodeLine{00159\ \textcolor{preprocessor}{\#define\ RX\_DR\ \ \ \ \ \ \ \ \ 0b01000000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00160\ \textcolor{preprocessor}{\#define\ TX\_DS\ \ \ \ \ \ \ \ \ 0b00100000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00161\ \textcolor{preprocessor}{\#define\ MAX\_RT\ \ \ \ \ \ \ \ 0b00010000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00162\ \textcolor{preprocessor}{\#define\ RX\_P\_NO\ \ \ \ \ \ \ 0b00001110\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00163\ \textcolor{preprocessor}{\#define\ RX\_P\_NO0\ \ \ \ \ \ 0b00000010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00164\ \textcolor{preprocessor}{\#define\ RX\_P\_NO1\ \ \ \ \ \ 0b00000100\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00165\ \textcolor{preprocessor}{\#define\ RX\_P\_NO2\ \ \ \ \ \ 0b00001000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00166\ \textcolor{preprocessor}{\#define\ TX\_FULL\ \ \ \ \ \ \ 0b00000001\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{comment}{/*\ OBSERVE\_TX\ Register\ Bits\ */}}
+\DoxyCodeLine{00169\ \textcolor{preprocessor}{\#define\ PLOS\_CNT\ \ \ \ \ \ 0b11110000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00170\ \textcolor{preprocessor}{\#define\ PLOS\_CNT0\ \ \ \ \ 0b00010000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00171\ \textcolor{preprocessor}{\#define\ PLOS\_CNT1\ \ \ \ \ 0b00100000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#define\ PLOS\_CNT2\ \ \ \ \ 0b01000000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00173\ \textcolor{preprocessor}{\#define\ PLOS\_CNT3\ \ \ \ \ 0b10000000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00174\ \textcolor{preprocessor}{\#define\ ARC\_CNT\ \ \ \ \ \ \ 0b00001111\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00175\ \textcolor{preprocessor}{\#define\ ARC\_CNT0\ \ \ \ \ \ 0b00000001\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00176\ \textcolor{preprocessor}{\#define\ ARC\_CNT1\ \ \ \ \ \ 0b00000010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00177\ \textcolor{preprocessor}{\#define\ ARC\_CNT2\ \ \ \ \ \ 0b00000100\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#define\ ARC\_CNT3\ \ \ \ \ \ 0b00001000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00179\ }
+\DoxyCodeLine{00180\ \textcolor{comment}{/*\ CD\ Register\ Bits\ */}}
+\DoxyCodeLine{00181\ \textcolor{preprocessor}{\#define\ CD\ \ \ \ \ \ \ \ \ \ \ \ 0b00000001\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00182\ }
+\DoxyCodeLine{00183\ \textcolor{comment}{/*\ FIFO\_STATUS\ Register\ Bits\ */}}
+\DoxyCodeLine{00184\ \textcolor{preprocessor}{\#define\ TX\_REUSE\ \ \ \ \ \ 0b01000000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00185\ \textcolor{preprocessor}{\#define\ FIFO\_FULL\ \ \ \ \ 0b00100000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00186\ \textcolor{preprocessor}{\#define\ TX\_EMPTY\ \ \ \ \ \ 0b00010000\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00187\ \textcolor{preprocessor}{\#define\ RX\_FULL\ \ \ \ \ \ \ 0b00000010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00188\ \textcolor{preprocessor}{\#define\ RX\_EMPTY\ \ \ \ \ \ 0b00000001\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00189\ }
+\DoxyCodeLine{00190\ \textcolor{comment}{/*\ FEATURE\ Register\ Bits\ */}}
+\DoxyCodeLine{00191\ \textcolor{preprocessor}{\#define\ EN\_DPL\ \ \ \ \ \ \ \ 0b00000100\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00192\ \textcolor{preprocessor}{\#define\ EN\_ACK\_PAY\ \ \ \ 0b00000010\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00193\ \textcolor{preprocessor}{\#define\ EN\_DYN\_ACK\ \ \ \ 0b00000001\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00194\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_BITMASKS\ group}}
+\DoxyCodeLine{00196\ }
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ \textcolor{preprocessor}{\#define\ R\_REGISTER\ \ \ \ 0x00\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00204\ \textcolor{preprocessor}{\#define\ W\_REGISTER\ \ \ \ 0x20\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#define\ R\_RX\_PAYLOAD\ \ 0x61\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00206\ \textcolor{preprocessor}{\#define\ W\_TX\_PAYLOAD\ \ 0xA0\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00207\ \textcolor{preprocessor}{\#define\ FLUSH\_TX\ \ \ \ \ \ 0xE1\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00208\ \textcolor{preprocessor}{\#define\ FLUSH\_RX\ \ \ \ \ \ 0xE2\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00209\ \textcolor{preprocessor}{\#define\ REUSE\_TX\_PL\ \ \ 0xE3\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00210\ \textcolor{preprocessor}{\#define\ ACTIVATE\ \ \ \ \ \ 0x50\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00211\ \textcolor{preprocessor}{\#define\ R\_RX\_PL\_WID\ \ \ 0x60\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00212\ \textcolor{preprocessor}{\#define\ W\_ACK\_PAYLOAD\ 0xA8\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00213\ \textcolor{preprocessor}{\#define\ W\_TX\_PAYLOAD\_NOACK\ \ \ 0xB0\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00214\ \textcolor{preprocessor}{\#define\ NOP\ \ \ \ \ \ \ \ \ \ \ 0xFF\ \ }\textcolor{preprocessor}{}}
+\DoxyCodeLine{00215\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_COMMANDS\ group}}
+\DoxyCodeLine{00217\ }
+\DoxyCodeLine{00223\ }
+\DoxyCodeLine{00227\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00228\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga543c6edfa643a5439fb2309d570d2538a4f95c89670e49ec555d689d057d4cfed}{nrf24l01\_air\_data\_rate\_1mbps}}\ =\ 0,\ \ }
+\DoxyCodeLine{00229\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga543c6edfa643a5439fb2309d570d2538a66290642e72201f6790e7c0b03caae62}{nrf24l01\_air\_data\_rate\_2mbps}},\ \ \ \ \ \ }
+\DoxyCodeLine{00230\ \}\ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga543c6edfa643a5439fb2309d570d2538}{nrf24l01\_air\_data\_rate}};}
+\DoxyCodeLine{00231\ }
+\DoxyCodeLine{00235\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00236\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga935205f670283e8df8329bb93e2f20b2add097352b7274fe8deccec40303688c4}{nrf24l01\_rf\_output\_power\_minus18dbm}}\ =\ 0,\ \ }
+\DoxyCodeLine{00237\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga935205f670283e8df8329bb93e2f20b2ac60d951a77c83af4af18fe6824fcf9fc}{nrf24l01\_rf\_output\_power\_minus12dbm}},\ \ \ \ \ \ }
+\DoxyCodeLine{00238\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga935205f670283e8df8329bb93e2f20b2a76cf213bc1d0b50bcb32df0bc828aa35}{nrf24l01\_rf\_output\_power\_minus6dbm}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00239\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga935205f670283e8df8329bb93e2f20b2a572e04db99ae78cfd15ba9b0bcd0ac7c}{nrf24l01\_rf\_output\_power\_0dbm}}\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00240\ \}\ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga935205f670283e8df8329bb93e2f20b2}{nrf24l01\_rf\_output\_power}};}
+\DoxyCodeLine{00241\ }
+\DoxyCodeLine{00245\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00246\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga9d8202711d7010b3f17cfb7abc9820eda2680b4f915898eca192ec445c76d5f11}{nrf24l01\_address\_width\_3bytes}}\ =\ 3,\ \ }
+\DoxyCodeLine{00247\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga9d8202711d7010b3f17cfb7abc9820edaee18038c5b61179af800e16c48f3d06c}{nrf24l01\_address\_width\_4bytes}},\ \ \ \ \ \ }
+\DoxyCodeLine{00248\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga9d8202711d7010b3f17cfb7abc9820eda63630e8320158ac65eba93d9a8ed49ed}{nrf24l01\_address\_width\_5bytes}},\ \ \ \ \ \ }
+\DoxyCodeLine{00249\ \}\ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga9d8202711d7010b3f17cfb7abc9820ed}{nrf24l01\_address\_width}};}
+\DoxyCodeLine{00250\ }
+\DoxyCodeLine{00254\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00255\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a31088c9eb3a74ff3993b8eab650bcebe}{nrf24l01\_auto\_retransmit\_delay\_250us}}\ =\ 0,\ \ \ }
+\DoxyCodeLine{00256\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a0ba255840cfa4ee719ea1141f5697726}{nrf24l01\_auto\_retransmit\_delay\_500us}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00257\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6ac884b5bdfad7bd505bfa8cb4a57ff157}{nrf24l01\_auto\_retransmit\_delay\_750us}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00258\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6af13665924b1f69be18a3b92f67c3f26e}{nrf24l01\_auto\_retransmit\_delay\_1000us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00259\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a42de139fb6357de359378aa5b882ba2b}{nrf24l01\_auto\_retransmit\_delay\_1250us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00260\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a32f5448de335eedaa01116b1124fce1c}{nrf24l01\_auto\_retransmit\_delay\_1500us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00261\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a47d842bcd01f4f70ffc7debb44af8d7d}{nrf24l01\_auto\_retransmit\_delay\_1750us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00262\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a46570de8dedb5300c2ec0f826f8a0c4c}{nrf24l01\_auto\_retransmit\_delay\_2000us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00263\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6ae67caa408173716b3195afef482694a2}{nrf24l01\_auto\_retransmit\_delay\_2250us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00264\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6af039647322e32f54e15f8e4090933971}{nrf24l01\_auto\_retransmit\_delay\_2500us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00265\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a14b3ce9c2a607851202779ec11061467}{nrf24l01\_auto\_retransmit\_delay\_2750us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00266\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a5bf892e41b7b27da911cd57936ca5139}{nrf24l01\_auto\_retransmit\_delay\_3000us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00267\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6ad0d8646c58eefa8d53cc6fcab74edc21}{nrf24l01\_auto\_retransmit\_delay\_3250us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00268\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a77c5b7c0184e7cb918ea1867ac63343b}{nrf24l01\_auto\_retransmit\_delay\_3500us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00269\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a3ad29fa6a21913f8f0a0d8b4c78211a2}{nrf24l01\_auto\_retransmit\_delay\_3750us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00270\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a5282b5d540db97ce0dcd27a9dd8be62b}{nrf24l01\_auto\_retransmit\_delay\_4000us}},\ \ \ \ \ \ }
+\DoxyCodeLine{00271\ \}\ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga816f505b2c3ea97c09731b441dae4db6}{nrf24l01\_auto\_retransmit\_delay}};}
+\DoxyCodeLine{00272\ }
+\DoxyCodeLine{00276\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00277\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fae8116dfb867cabb9781ef502e820c5c6}{nrf24l01\_auto\_retransmit\_count\_disable}}\ =\ 0,\ \ }
+\DoxyCodeLine{00278\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fabcaf4f6ffed3b9d187c0e30e7634b002}{nrf24l01\_auto\_retransmit\_count\_1}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00279\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa023f3d7ddd64d275c69bf84a91f7a637}{nrf24l01\_auto\_retransmit\_count\_2}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00280\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa3227e83a73f369152296705c41a8f76c}{nrf24l01\_auto\_retransmit\_count\_3}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00281\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa35fc78d1c2221e9be95a41baad23df22}{nrf24l01\_auto\_retransmit\_count\_4}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00282\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa9b2b4d45068dd3ed1814dbf2d1188c81}{nrf24l01\_auto\_retransmit\_count\_5}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00283\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50faa427098dcf1647bc76d96843fd153de1}{nrf24l01\_auto\_retransmit\_count\_6}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00284\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa1640f3a8cad4946450068bea6721419c}{nrf24l01\_auto\_retransmit\_count\_7}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00285\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fae6b9c1d93658b7500c9a1694cd91f847}{nrf24l01\_auto\_retransmit\_count\_8}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00286\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fae4cea9715015c2107504af06ec8b3e52}{nrf24l01\_auto\_retransmit\_count\_9}},\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00287\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa58146ff0efcfdf68d0d315523e2b7234}{nrf24l01\_auto\_retransmit\_count\_10}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00288\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa3df06c6c9caabf72f41bf29047216d5b}{nrf24l01\_auto\_retransmit\_count\_11}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00289\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa877a5b35d43b71ca4b2f75ea90b6f835}{nrf24l01\_auto\_retransmit\_count\_12}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00290\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fae8094ebd28b73fdcbf46e716d9511c89}{nrf24l01\_auto\_retransmit\_count\_13}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00291\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fac27dd6cc4236bb6175c21f4a05c80f9f}{nrf24l01\_auto\_retransmit\_count\_14}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00292\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fad1fe37dba3521d9fe4a261a09607cbeb}{nrf24l01\_auto\_retransmit\_count\_15}},\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00293\ \}\ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gad8ffddaf2b07a103805f32ad3a50b50f}{nrf24l01\_auto\_retransmit\_count}};}
+\DoxyCodeLine{00294\ }
+\DoxyCodeLine{00298\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\{}
+\DoxyCodeLine{00299\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggae5ae868b1e3e397e2bca9059734b331aa828e64e7f221de0567bfe5699f7e7cc8}{nrf24l01\_irq\_rx\_data\_ready}}\ =\ 0,\ \ \ \ \ \ }
+\DoxyCodeLine{00300\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggae5ae868b1e3e397e2bca9059734b331aa92d1a0f6ae9ebb618fcc432b4b477237}{nrf24l01\_irq\_tx\_data\_sent}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00301\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggae5ae868b1e3e397e2bca9059734b331aabee72fe440eb439cefcd95d8167107c4}{nrf24l01\_maximum\_retransmitted}},\ \ \ \ \ \ }
+\DoxyCodeLine{00302\ \}\ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gae5ae868b1e3e397e2bca9059734b331a}{nrf24l01\_irq}};}
+\DoxyCodeLine{00303\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_ENUMS\ group}}
+\DoxyCodeLine{00305\ }
+\DoxyCodeLine{00311\ }
+\DoxyCodeLine{00315\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00316\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structnrf24l01__data__pipe_abe005784ed6577de5ade67f49dd5bffd}{nrf24l01\_data\_pipe\_enable}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00317\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structnrf24l01__data__pipe_a3dfd678f6bbec0ccd919f4c31a6d2e6c}{nrf24l01\_data\_pipe\_dyn\_payload\_length\_enable}};\ }
+\DoxyCodeLine{00318\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structnrf24l01__data__pipe_aa5fc48e38184683c7820de028007dce7}{nrf24l01\_data\_pipe\_auto\_ack}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00319\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{structnrf24l01__data__pipe_a706b00824b032861d6cdd4ad564e75a4}{nrf24l01\_data\_pipe\_receive\_address}};\ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00320\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structnrf24l01__data__pipe_aa6c102dfa5412ffa62d02e65f898c825}{nrf24l01\_data\_pipe\_payload\_width}};\ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00321\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{structnrf24l01__data__pipe_a91705ce2b27cc90bc49fd9d7c1ed359f}{nrf24l01\_data\_pipe\_payload}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00322\ \}\ \mbox{\hyperlink{structnrf24l01__data__pipe}{nrf24l01\_data\_pipe}};}
+\DoxyCodeLine{00323\ }
+\DoxyCodeLine{00327\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}\{}
+\DoxyCodeLine{00328\ \ \ \ \ SPI\_HandleTypeDef\ *\ \mbox{\hyperlink{structnrf24l01__device_a7c47ab6b83fb560e7460fa89c4523e09}{spi}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00329\ \ \ \ \ GPIO\_TypeDef\ *irq\_port,\ *ce\_port,\ *\mbox{\hyperlink{structnrf24l01__device_a9adb103a156701c367f27ea75c193782}{csn\_port}};\ \ \ \ }
+\DoxyCodeLine{00330\ \ \ \ \ uint8\_t\ irq\_pin,\ ce\_pin,\ \mbox{\hyperlink{structnrf24l01__device_aa5dcec097d6d7f9bf501eda66cf77022}{csn\_pin}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00331\ \ \ \ \ TIM\_HandleTypeDef\ *\ \mbox{\hyperlink{structnrf24l01__device_a8eda636f108c5827e88a8ac872bf72c2}{timer}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00332\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structnrf24l01__device_ab46d59549b62cde77d6d4fe02d764535}{power\_up}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00333\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structnrf24l01__device_ad6235a8559db2fe7a143e8fc564ae78f}{primary\_rx}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00334\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga9d8202711d7010b3f17cfb7abc9820ed}{nrf24l01\_address\_width}}\ \mbox{\hyperlink{structnrf24l01__device_a6143d5bf20252d6cc0156f0854aa32d1}{address\_width}};\ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00335\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga816f505b2c3ea97c09731b441dae4db6}{nrf24l01\_auto\_retransmit\_delay}}\ \mbox{\hyperlink{structnrf24l01__device_a0e009cba0cbfca35d1e67c51e7368aeb}{auto\_retransmit\_delay}};\ }
+\DoxyCodeLine{00336\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gad8ffddaf2b07a103805f32ad3a50b50f}{nrf24l01\_auto\_retransmit\_count}}\ \mbox{\hyperlink{structnrf24l01__device_a8cd21461ac614041c1fa6030152b08d2}{auto\_retransmit\_count}};\ }
+\DoxyCodeLine{00337\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structnrf24l01__device_a60fa5af0a1d44ca1dae74df32de401c2}{frequency\_channel}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00338\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga543c6edfa643a5439fb2309d570d2538}{nrf24l01\_air\_data\_rate}}\ \mbox{\hyperlink{structnrf24l01__device_a987d6661ef478812fda0df9616ca1f76}{air\_data\_rate}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00339\ \ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga935205f670283e8df8329bb93e2f20b2}{nrf24l01\_rf\_output\_power}}\ \mbox{\hyperlink{structnrf24l01__device_a36b8eb68be635895962d329b4d4eae16}{rf\_output\_power}};\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00340\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structnrf24l01__device_adba66418e6d09c2ca2419c201705a26c}{setup\_lna\_gain}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00341\ \ \ \ \ \mbox{\hyperlink{structnrf24l01__data__pipe}{nrf24l01\_data\_pipe}}\ \mbox{\hyperlink{structnrf24l01__device_a89df85feca9c9cb5074d9654d8f443be}{data\_pipe}}[6];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00342\ \ \ \ \ uint8\_t*\ \mbox{\hyperlink{structnrf24l01__device_a78af98b226aaf5b67e9110e7cc37abaf}{transmit\_address}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00343\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structnrf24l01__device_a12eac93e62939d136622b1aeed88dabe}{dynamic\_payload\_length\_enable}};\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00344\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structnrf24l01__device_ac6e174857341d886bf2dc70889fd575e}{payload\_with\_ack\_enable}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00345\ \ \ \ \ uint8\_t\ \mbox{\hyperlink{structnrf24l01__device_a52efd73a1efade71fa37ecd49563ac4b}{dynamic\_ack\_enable}};\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00346\ \}\ \mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}};}
+\DoxyCodeLine{00347\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_STRUCTS\ group}}
+\DoxyCodeLine{00349\ }
+\DoxyCodeLine{00355\ }
+\DoxyCodeLine{00361\ }
+\DoxyCodeLine{00374\ \mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga93ef724a09308a7cb33d1f6d99d17fcf}{nrf24l01\_get\_default\_config}}();}
+\DoxyCodeLine{00375\ }
+\DoxyCodeLine{00387\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga2987d1df9ae2edb18ffdb9b5dd43c90c}{nrf24l01\_init}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00388\ }
+\DoxyCodeLine{00395\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_gae29cae51dac5b4434b04b0e4c7c2f821}{nrf24l01\_deinit}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00396\ }
+\DoxyCodeLine{00406\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga7eff31f8bd227fc90ab6f8fd82bd5501}{nrf24l01\_init\_data\_pipe}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t\ pipe\_number);}
+\DoxyCodeLine{00407\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_INIT\ group}}
+\DoxyCodeLine{00409\ }
+\DoxyCodeLine{00415\ }
+\DoxyCodeLine{00423\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_gabb08dd9573abd55c08fab1ea34f13c08}{nrf24l01\_delay}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint16\_t\ us);}
+\DoxyCodeLine{00424\ }
+\DoxyCodeLine{00430\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga7d07306b43d1be8d52de88df78e7a81f}{nrf24l01\_chip\_select}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00431\ }
+\DoxyCodeLine{00437\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga59d940b996f1d15d7e72031b9af6ba55}{nrf24l01\_chip\_deselect}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00438\ }
+\DoxyCodeLine{00444\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga2a460c95a56915aae0e682bec28bdafb}{nrf24l01\_chip\_enable}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00445\ }
+\DoxyCodeLine{00451\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga453868646c931f32d3b9561e32f00e6e}{nrf24l01\_chip\_disable}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00452\ }
+\DoxyCodeLine{00459\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_gae046b212e91886418d20da15085166ec}{nrf24l01\_send\_command}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}*\ device,\ uint8\_t\ command);}
+\DoxyCodeLine{00460\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_LOW\_LEVEL\ group}}
+\DoxyCodeLine{00462\ }
+\DoxyCodeLine{00468\ }
+\DoxyCodeLine{00477\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_ga796e04245ffef5f2d82389e26a7abb40}{nrf24l01\_read\_register}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t\ reg,\ uint8\_t*\ data,\ uint16\_t\ length);}
+\DoxyCodeLine{00478\ }
+\DoxyCodeLine{00487\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_gaf8dbe49557d7b34519895a2ec52f35c1}{nrf24l01\_write\_register}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t\ reg,\ uint8\_t*\ data,\ uint16\_t\ length);}
+\DoxyCodeLine{00488\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_REGISTER\_ACCESS\ group}}
+\DoxyCodeLine{00490\ }
+\DoxyCodeLine{00496\ }
+\DoxyCodeLine{00504\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga5f9de8a2ac1cbe154bf51187294a8fe8}{nrf24l01\_read\_rx\_payload}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t*\ data,\ uint16\_t\ length);}
+\DoxyCodeLine{00505\ }
+\DoxyCodeLine{00513\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga9a15f7cf36b6defbd1b225effebfa553}{nrf24l01\_write\_tx\_payload}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t*\ data\ ,\ uint16\_t\ length);}
+\DoxyCodeLine{00514\ }
+\DoxyCodeLine{00526\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_gadea150b44704cb0637b6fddd1c3e88e6}{nrf24l01\_write\_ack\_payload}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t*\ data,\ uint8\_t\ pipe,\ uint16\_t\ length);}
+\DoxyCodeLine{00527\ }
+\DoxyCodeLine{00538\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga95991b25fca7f1fb797bff6e18cb6548}{nrf24l01\_write\_tx\_payload\_no\_ack}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t\ *\ data,\ uint16\_t\ length);}
+\DoxyCodeLine{00539\ }
+\DoxyCodeLine{00549\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga1df89c9b18bc724c308cab63782bcc0d}{nrf24l01\_read\_rx\_payload\_width}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t*\ data);}
+\DoxyCodeLine{00550\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_PAYLOAD\_ACCESS\ group}}
+\DoxyCodeLine{00552\ }
+\DoxyCodeLine{00558\ }
+\DoxyCodeLine{00566\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga866616f274096520b6c45b690cc7ba43}{nrf24l01\_flush\_tx}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00567\ }
+\DoxyCodeLine{00575\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga4dda52b666111b0b1057f1305314fa2e}{nrf24l01\_flush\_rx}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00576\ }
+\DoxyCodeLine{00585\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga3c41ea861c90977f3804062acc55e079}{nrf24l01\_reuse\_tx\_payload}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00586\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_FIFO\_CONTROL\ group}}
+\DoxyCodeLine{00588\ }
+\DoxyCodeLine{00594\ }
+\DoxyCodeLine{00603\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_ga3fbb42aa6b96abf320f6b7598a3f0a1d}{nrf24l01\_activate\_extra\_features}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00604\ }
+\DoxyCodeLine{00613\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_ga6b1c1bd9599bd9069d4617da30705ed3}{nrf24l01\_nop}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00614\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_ADVANCED\_FEATURES\ group}}
+\DoxyCodeLine{00616\ }
+\DoxyCodeLine{00622\ }
+\DoxyCodeLine{00631\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l_ga8edd849b4f17a7679ee6425917c7222b}{nrf24l01\_power\_up}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00632\ }
+\DoxyCodeLine{00641\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l_ga3a1c43d5225cc9a37e6617752de2374f}{nrf24l01\_power\_down}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00642\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_POWER\_CONTROL\ group}}
+\DoxyCodeLine{00644\ }
+\DoxyCodeLine{00650\ }
+\DoxyCodeLine{00659\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga36d58fe06759972caf9c7a6334e7bfd3}{nrf24l01\_transmit}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00660\ }
+\DoxyCodeLine{00669\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga4c6f0e16c6dcef30ccff166607835f1e}{nrf24l01\_listen}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device);}
+\DoxyCodeLine{00670\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_MODE\_CONTROL\ group}}
+\DoxyCodeLine{00672\ }
+\DoxyCodeLine{00678\ }
+\DoxyCodeLine{00688\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_gae6985d003320b2dbc491049a97680819}{nrf24l01\_dynamic\_payload\_length}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t\ enable);}
+\DoxyCodeLine{00689\ }
+\DoxyCodeLine{00698\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_gae6d8ff5807aa846adae32d2bd9e2719f}{nrf24l01\_payload\_with\_ack}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t\ enable);}
+\DoxyCodeLine{00699\ }
+\DoxyCodeLine{00709\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_ga0e644feb15b0027b8951ee15da977539}{nrf24l01\_dynamic\_ack}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t\ enable);}
+\DoxyCodeLine{00710\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_FEATURE\_CONTROL\ group}}
+\DoxyCodeLine{00712\ }
+\DoxyCodeLine{00718\ }
+\DoxyCodeLine{00729\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga7f87827b095916e98b7e40b95faf0437}{nrf24l01\_data\_pipe\_dynamic\_payload\_length}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t\ pipe\_number,\ uint8\_t\ enable);}
+\DoxyCodeLine{00730\ }
+\DoxyCodeLine{00740\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gae689b3cc45f5fc87c9ab5e5fde30386c}{nrf24l01\_data\_pipe\_enable}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t\ pipe\_number,\ uint8\_t\ enable);}
+\DoxyCodeLine{00741\ }
+\DoxyCodeLine{00751\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga19f14a73daca5f37d2f82f07972bbecc}{nrf24l01\_data\_pipe\_auto\_ack}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t\ pipe\_number,\ uint8\_t\ enable);}
+\DoxyCodeLine{00752\ }
+\DoxyCodeLine{00766\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga236d8daf002dce8ad435c162a6fd5474}{nrf24l01\_data\_pipe\_address}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t\ pipe\_number,\ uint8\_t\ *\ address,\ uint8\_t\ length);}
+\DoxyCodeLine{00767\ }
+\DoxyCodeLine{00780\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gaa4f2b1843d94a7c0ca7019fe72b5412d}{nrf24l01\_data\_pipe\_payload\_width}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ uint8\_t\ pipe\_number,\ uint8\_t\ width);}
+\DoxyCodeLine{00781\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_PIPE\_CONTROL\ group}}
+\DoxyCodeLine{00783\ }
+\DoxyCodeLine{00789\ }
+\DoxyCodeLine{00803\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l_ga6c7f8b1aeea8d1c5f022979c8b3662dc}{nrf24l01\_interrupt}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gae5ae868b1e3e397e2bca9059734b331a}{nrf24l01\_irq}}\ irq,\ uint8\_t\ enable);}
+\DoxyCodeLine{00804\ }
+\DoxyCodeLine{00814\ uint8\_t\ \mbox{\hyperlink{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l_gaf6ad179460ef68a2b9eafc6ff044cf1c}{nrf24l01\_clear\_interrupt\_flag}}(\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ *\ device,\ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gae5ae868b1e3e397e2bca9059734b331a}{nrf24l01\_irq}}\ irq);}
+\DoxyCodeLine{00815\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_INTERRUPT\_CONTROL\ group}}
+\DoxyCodeLine{00817\ \ \textcolor{comment}{//\ End\ of\ NRF24L01\_FUNCTIONS\ group}}
+\DoxyCodeLine{00819\ }
+\DoxyCodeLine{00820\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//NRF24L01\_DRIVER\_NRF24L01\_H}}
+\DoxyCodeLine{00821\ }
+
+\end{DoxyCode}

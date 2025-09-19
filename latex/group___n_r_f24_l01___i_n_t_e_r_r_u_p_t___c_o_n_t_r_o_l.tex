@@ -1,0 +1,71 @@
+\doxysubsection{Interrupt Control Functions }
+\hypertarget{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l}{}\label{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l}\index{Interrupt Control Functions@{Interrupt Control Functions}}
+
+
+Functions for managing interrupt sources.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l_ga6c7f8b1aeea8d1c5f022979c8b3662dc}{nrf24l01\+\_\+interrupt}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gae5ae868b1e3e397e2bca9059734b331a}{nrf24l01\+\_\+irq}} irq, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable specific interrupt. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l_gaf6ad179460ef68a2b9eafc6ff044cf1c}{nrf24l01\+\_\+clear\+\_\+interrupt\+\_\+flag}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gae5ae868b1e3e397e2bca9059734b331a}{nrf24l01\+\_\+irq}} irq)
+\begin{DoxyCompactList}\small\item\em Clear specific interrupt flag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Functions for managing interrupt sources. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l_doc-func-members}
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l_gaf6ad179460ef68a2b9eafc6ff044cf1c}\index{Interrupt Control Functions@{Interrupt Control Functions}!nrf24l01\_clear\_interrupt\_flag@{nrf24l01\_clear\_interrupt\_flag}}
+\index{nrf24l01\_clear\_interrupt\_flag@{nrf24l01\_clear\_interrupt\_flag}!Interrupt Control Functions@{Interrupt Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_clear\_interrupt\_flag()}{nrf24l01\_clear\_interrupt\_flag()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l_gaf6ad179460ef68a2b9eafc6ff044cf1c} 
+uint8\+\_\+t nrf24l01\+\_\+clear\+\_\+interrupt\+\_\+flag (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gae5ae868b1e3e397e2bca9059734b331a}{nrf24l01\+\_\+irq}}}]{irq}{}\end{DoxyParamCaption})}
+
+
+
+Clear specific interrupt flag. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em irq} & Interrupt type to clear \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Clears the specified interrupt flag in the status register. This must be done to reset the IRQ pin after an interrupt occurs. \Hypertarget{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l_ga6c7f8b1aeea8d1c5f022979c8b3662dc}\index{Interrupt Control Functions@{Interrupt Control Functions}!nrf24l01\_interrupt@{nrf24l01\_interrupt}}
+\index{nrf24l01\_interrupt@{nrf24l01\_interrupt}!Interrupt Control Functions@{Interrupt Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_interrupt()}{nrf24l01\_interrupt()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l_ga6c7f8b1aeea8d1c5f022979c8b3662dc} 
+uint8\+\_\+t nrf24l01\+\_\+interrupt (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gae5ae868b1e3e397e2bca9059734b331a}{nrf24l01\+\_\+irq}}}]{irq}{, }\item[{uint8\+\_\+t}]{enable}{}\end{DoxyParamCaption})}
+
+
+
+Enable/disable specific interrupt. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em irq} & Interrupt type to control \\
+\hline
+{\em enable} & 1 to enable, 0 to disable (mask) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Controls interrupt masking for the specified interrupt source. When enabled (0), the interrupt will trigger the IRQ pin. When disabled (1), the interrupt is masked.
+
+\begin{DoxyNote}{Note}
+Interrupt enable logic is inverted -\/ 0 enables, 1 disables 
+\end{DoxyNote}

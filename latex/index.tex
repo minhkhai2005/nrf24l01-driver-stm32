@@ -1,0 +1,146 @@
+\chapter{n\+RF24\+L01 Driver Documentation }
+\hypertarget{index}{}\label{index}\index{nRF24L01 Driver Documentation@{nRF24L01 Driver Documentation}}
+\hypertarget{index_intro_sec}{}\doxysection{\texorpdfstring{Introduction}{Introduction}}\label{index_intro_sec}
+This is a comprehensive driver library for the n\+RF24\+L01 2.\+4\+GHz wireless transceiver module, designed specifically for STM32 microcontrollers using the HAL library.\hypertarget{index_features_sec}{}\doxysection{\texorpdfstring{Key Features}{Key Features}}\label{index_features_sec}
+
+\begin{DoxyItemize}
+\item Full register-\/level control of n\+RF24\+L01 functionality
+\item Support for all 6 data pipes with individual configuration
+\item Auto-\/acknowledgment and auto-\/retransmission
+\item Dynamic payload lengths
+\item Payload with ACK capability
+\item Configurable RF power levels and data rates
+\item Comprehensive interrupt handling
+\item Easy-\/to-\/use high-\/level API functions
+\end{DoxyItemize}\hypertarget{index_usage_sec}{}\doxysection{\texorpdfstring{Basic Usage}{Basic Usage}}\label{index_usage_sec}
+\hypertarget{index_init_subsec}{}\doxysubsection{\texorpdfstring{Initialization}{Initialization}}\label{index_init_subsec}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{nrf24l01_8h}{nrf24l01.h}}"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Get\ default\ configuration}}
+\DoxyCodeLine{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ nrf\ =\ \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga93ef724a09308a7cb33d1f6d99d17fcf}{nrf24l01\_get\_default\_config}}();}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Configure\ hardware\ connections}}
+\DoxyCodeLine{nrf.\mbox{\hyperlink{structnrf24l01__device_a7c47ab6b83fb560e7460fa89c4523e09}{spi}}\ =\ \&hspi1;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ SPI\ handle}}
+\DoxyCodeLine{nrf.ce\_port\ =\ GPIOA;\ \ \ \ \ \ \ \textcolor{comment}{//\ CE\ pin\ port}}
+\DoxyCodeLine{nrf.ce\_pin\ =\ 8;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ CE\ pin\ number}}
+\DoxyCodeLine{nrf.\mbox{\hyperlink{structnrf24l01__device_a9adb103a156701c367f27ea75c193782}{csn\_port}}\ =\ GPIOA;\ \ \ \ \ \ \textcolor{comment}{//\ CSN\ pin\ port}}
+\DoxyCodeLine{nrf.\mbox{\hyperlink{structnrf24l01__device_aa5dcec097d6d7f9bf501eda66cf77022}{csn\_pin}}\ =\ 9;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ CSN\ pin\ number}}
+\DoxyCodeLine{nrf.irq\_port\ =\ GPIOA;\ \ \ \ \ \ \textcolor{comment}{//\ IRQ\ pin\ port\ (optional)}}
+\DoxyCodeLine{nrf.irq\_pin\ =\ 10;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ IRQ\ pin\ number\ (optional)}}
+\DoxyCodeLine{nrf.\mbox{\hyperlink{structnrf24l01__device_a8eda636f108c5827e88a8ac872bf72c2}{timer}}\ =\ \&htim2;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ Timer\ for\ microsecond\ delays}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Initialize\ the\ device}}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga2987d1df9ae2edb18ffdb9b5dd43c90c}{nrf24l01\_init}}(\&nrf)\ ==\ 0)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Initialization\ successful}}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{index_tx_subsec}{}\doxysubsection{\texorpdfstring{Transmitter Setup}{Transmitter Setup}}\label{index_tx_subsec}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Configure\ transmit\ address}}
+\DoxyCodeLine{uint8\_t\ tx\_address[]\ =\ \{0xE7,\ 0xE7,\ 0xE7,\ 0xE7,\ 0xE7\};}
+\DoxyCodeLine{nrf.\mbox{\hyperlink{structnrf24l01__device_a78af98b226aaf5b67e9110e7cc37abaf}{transmit\_address}}\ =\ tx\_address;}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_gaf8dbe49557d7b34519895a2ec52f35c1}{nrf24l01\_write\_register}}(\&nrf,\ \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gaa734c6e08b9f794436eacbabe466a6c4}{TX\_ADDR}},\ nrf.\mbox{\hyperlink{structnrf24l01__device_a78af98b226aaf5b67e9110e7cc37abaf}{transmit\_address}},\ 5);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Configure\ data\ pipe\ 0\ for\ auto-\/ack\ (must\ match\ TX\ address)}}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga236d8daf002dce8ad435c162a6fd5474}{nrf24l01\_data\_pipe\_address}}(\&nrf,\ 0,\ nrf.\mbox{\hyperlink{structnrf24l01__device_a78af98b226aaf5b67e9110e7cc37abaf}{transmit\_address}},\ 5);}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gae689b3cc45f5fc87c9ab5e5fde30386c}{nrf24l01\_data\_pipe\_enable}}(\&nrf,\ 0,\ 1);}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga19f14a73daca5f37d2f82f07972bbecc}{nrf24l01\_data\_pipe\_auto\_ack}}(\&nrf,\ 0,\ 1);}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gaa4f2b1843d94a7c0ca7019fe72b5412d}{nrf24l01\_data\_pipe\_payload\_width}}(\&nrf,\ 0,\ 32);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Send\ data}}
+\DoxyCodeLine{uint8\_t\ data[]\ =\ \textcolor{stringliteral}{"{}Hello\ nRF24L01!"{}};}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga9a15f7cf36b6defbd1b225effebfa553}{nrf24l01\_write\_tx\_payload}}(\&nrf,\ data,\ \textcolor{keyword}{sizeof}(data));\ \textcolor{comment}{//\ write\ payload\ to\ TX\ FIFO}}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga36d58fe06759972caf9c7a6334e7bfd3}{nrf24l01\_transmit}}(\&nrf);\ \textcolor{comment}{//\ put\ device\ in\ TX\ Mode}}
+
+\end{DoxyCode}
+\hypertarget{index_rx_subsec}{}\doxysubsection{\texorpdfstring{Receiver Setup}{Receiver Setup}}\label{index_rx_subsec}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Configure\ receive\ address\ for\ pipe\ 1}}
+\DoxyCodeLine{uint8\_t\ rx\_address[]\ =\ \{0xE7,\ 0xE7,\ 0xE7,\ 0xE7,\ 0xE7\};}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga236d8daf002dce8ad435c162a6fd5474}{nrf24l01\_data\_pipe\_address}}(\&nrf,\ 1,\ rx\_address,\ 5);}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gae689b3cc45f5fc87c9ab5e5fde30386c}{nrf24l01\_data\_pipe\_enable}}(\&nrf,\ 1,\ 1);}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga19f14a73daca5f37d2f82f07972bbecc}{nrf24l01\_data\_pipe\_auto\_ack}}(\&nrf,\ 1,\ 1);}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gaa4f2b1843d94a7c0ca7019fe72b5412d}{nrf24l01\_data\_pipe\_payload\_width}}(\&nrf,\ 1,\ 32);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ make\ the\ device\ PRX}}
+\DoxyCodeLine{uint8\_t\ config\_register\ =\ 0;}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_ga796e04245ffef5f2d82389e26a7abb40}{nrf24l01\_read\_register}}(\&nrf,\ \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga76ea3cf49247a07c54b3db005a3c7f57}{CONFIG}},\ \&config\_register,\ 1);}
+\DoxyCodeLine{config\_register\ |=\ PRX;}
+\DoxyCodeLine{nrf24l01\_wrtie\_register(\&nrf,\ \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga76ea3cf49247a07c54b3db005a3c7f57}{CONFIG}},\ \&config\_register,\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Listen\ to\ new\ available\ packets}}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga4c6f0e16c6dcef30ccff166607835f1e}{nrf24l01\_listen}}(\&nrf);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Check\ for\ received\ data}}
+\DoxyCodeLine{uint8\_t\ status\ =\ \mbox{\hyperlink{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_ga6b1c1bd9599bd9069d4617da30705ed3}{nrf24l01\_nop}}(\&nrf);}
+\DoxyCodeLine{\textcolor{keywordflow}{do}\ \{}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (status\ \&\ \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga312d1f2745a86149b27cff7d61e715df}{RX\_DR}})\ \{}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ received\_data[32];}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga5f9de8a2ac1cbe154bf51187294a8fe8}{nrf24l01\_read\_rx\_payload}}(\&nrf,\ received\_data,\ 32);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l_gaf6ad179460ef68a2b9eafc6ff044cf1c}{nrf24l01\_clear\_interrupt\_flag}}(\&nrf,\ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggae5ae868b1e3e397e2bca9059734b331aa828e64e7f221de0567bfe5699f7e7cc8}{nrf24l01\_irq\_rx\_data\_ready}});}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{status\ =\ \mbox{\hyperlink{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_ga6b1c1bd9599bd9069d4617da30705ed3}{nrf24l01\_nop}}(\&nrf);}
+\DoxyCodeLine{\}\textcolor{keywordflow}{while}(1);}
+
+\end{DoxyCode}
+\hypertarget{index_config_sec}{}\doxysection{\texorpdfstring{Configuration Options}{Configuration Options}}\label{index_config_sec}
+The driver supports extensive configuration options\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{RF Channel}}\+: 0-\/125 (2.\+400-\/2.\+525 GHz)
+\item {\bfseries{Data Rate}}\+: 1 Mbps or 2 Mbps
+\item {\bfseries{Output Power}}\+: -\/18, -\/12, -\/6, or 0 d\+Bm
+\item {\bfseries{Address Width}}\+: 3, 4, or 5 bytes
+\item {\bfseries{Auto Retransmit}}\+: Configurable delay (250µs-\/4ms) and count (0-\/15)
+\item {\bfseries{Payload Length}}\+: Fixed (1-\/32 bytes) or dynamic
+\end{DoxyItemize}\hypertarget{index_advanced_sec}{}\doxysection{\texorpdfstring{Advanced Features}{Advanced Features}}\label{index_advanced_sec}
+\hypertarget{index_dpl_subsec}{}\doxysubsection{\texorpdfstring{Dynamic Payload Length}{Dynamic Payload Length}}\label{index_dpl_subsec}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Enable\ dynamic\ payload\ length\ globally}}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_gae6985d003320b2dbc491049a97680819}{nrf24l01\_dynamic\_payload\_length}}(\&nrf,\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Enable\ for\ specific\ pipes}}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga7f87827b095916e98b7e40b95faf0437}{nrf24l01\_data\_pipe\_dynamic\_payload\_length}}(\&nrf,\ 0,\ 1);}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga7f87827b095916e98b7e40b95faf0437}{nrf24l01\_data\_pipe\_dynamic\_payload\_length}}(\&nrf,\ 1,\ 1);}
+
+\end{DoxyCode}
+\hypertarget{index_ack_payload_subsec}{}\doxysubsection{\texorpdfstring{ACK Payloads}{ACK Payloads}}\label{index_ack_payload_subsec}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Enable\ payload\ with\ ACK\ feature}}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_gae6d8ff5807aa846adae32d2bd9e2719f}{nrf24l01\_payload\_with\_ack}}(\&nrf,\ 1);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Write\ ACK\ payload\ for\ pipe\ 1}}
+\DoxyCodeLine{uint8\_t\ ack\_data[]\ =\ \textcolor{stringliteral}{"{}ACK"{}};}
+\DoxyCodeLine{\mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_gadea150b44704cb0637b6fddd1c3e88e6}{nrf24l01\_write\_ack\_payload}}(\&nrf,\ ack\_data,\ 1,\ \textcolor{keyword}{sizeof}(ack\_data));}
+
+\end{DoxyCode}
+\hypertarget{index_troubleshooting_sec}{}\doxysection{\texorpdfstring{Troubleshooting}{Troubleshooting}}\label{index_troubleshooting_sec}
+Common issues and solutions\+:
+
+
+\begin{DoxyItemize}
+\item {\bfseries{No communication}}\+: Check SPI connections and timing
+\item {\bfseries{Transmission fails}}\+: Verify addresses match between TX and RX
+\item {\bfseries{High packet loss}}\+: Adjust RF power level or channel
+\item {\bfseries{Interrupt not working}}\+: Ensure IRQ pin is configured and interrupt flags are cleared
+\end{DoxyItemize}\hypertarget{index_license_sec}{}\doxysection{\texorpdfstring{License}{License}}\label{index_license_sec}
+This driver is provided as-\/is for educational and commercial use.
+
+\begin{DoxyAuthor}{Author}
+Trần Minh Khải 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+September 18, 2025 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}

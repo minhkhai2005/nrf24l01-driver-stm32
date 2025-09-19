@@ -1,0 +1,81 @@
+\doxysubsection{FIFO Control Functions }
+\hypertarget{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l}{}\label{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l}\index{FIFO Control Functions@{FIFO Control Functions}}
+
+
+Functions for managing TX and RX FIFOs.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga866616f274096520b6c45b690cc7ba43}{nrf24l01\+\_\+flush\+\_\+tx}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Flush TX FIFO. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga4dda52b666111b0b1057f1305314fa2e}{nrf24l01\+\_\+flush\+\_\+rx}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Flush RX FIFO. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga3c41ea861c90977f3804062acc55e079}{nrf24l01\+\_\+reuse\+\_\+tx\+\_\+payload}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Reuse last transmitted payload. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Functions for managing TX and RX FIFOs. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_doc-func-members}
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga4dda52b666111b0b1057f1305314fa2e}\index{FIFO Control Functions@{FIFO Control Functions}!nrf24l01\_flush\_rx@{nrf24l01\_flush\_rx}}
+\index{nrf24l01\_flush\_rx@{nrf24l01\_flush\_rx}!FIFO Control Functions@{FIFO Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_flush\_rx()}{nrf24l01\_flush\_rx()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga4dda52b666111b0b1057f1305314fa2e} 
+uint8\+\_\+t nrf24l01\+\_\+flush\+\_\+rx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Flush RX FIFO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value
+\end{DoxyReturn}
+Clears all received payloads in the RX FIFO. Used in RX mode. \Hypertarget{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga866616f274096520b6c45b690cc7ba43}\index{FIFO Control Functions@{FIFO Control Functions}!nrf24l01\_flush\_tx@{nrf24l01\_flush\_tx}}
+\index{nrf24l01\_flush\_tx@{nrf24l01\_flush\_tx}!FIFO Control Functions@{FIFO Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_flush\_tx()}{nrf24l01\_flush\_tx()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga866616f274096520b6c45b690cc7ba43} 
+uint8\+\_\+t nrf24l01\+\_\+flush\+\_\+tx (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Flush TX FIFO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value
+\end{DoxyReturn}
+Clears all pending payloads in the TX FIFO. Used in TX mode. \Hypertarget{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga3c41ea861c90977f3804062acc55e079}\index{FIFO Control Functions@{FIFO Control Functions}!nrf24l01\_reuse\_tx\_payload@{nrf24l01\_reuse\_tx\_payload}}
+\index{nrf24l01\_reuse\_tx\_payload@{nrf24l01\_reuse\_tx\_payload}!FIFO Control Functions@{FIFO Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_reuse\_tx\_payload()}{nrf24l01\_reuse\_tx\_payload()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga3c41ea861c90977f3804062acc55e079} 
+uint8\+\_\+t nrf24l01\+\_\+reuse\+\_\+tx\+\_\+payload (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Reuse last transmitted payload. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value
+\end{DoxyReturn}
+Reuses the last transmitted payload. The packet will be retransmitted as long as CE is held high. 

@@ -1,0 +1,61 @@
+\doxysubsection{Power Control Functions }
+\hypertarget{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l}{}\label{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l}\index{Power Control Functions@{Power Control Functions}}
+
+
+Functions for managing device power state.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l_ga8edd849b4f17a7679ee6425917c7222b}{nrf24l01\+\_\+power\+\_\+up}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Power up the n\+RF24\+L01 device. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l_ga3a1c43d5225cc9a37e6617752de2374f}{nrf24l01\+\_\+power\+\_\+down}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Power down the n\+RF24\+L01 device. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Functions for managing device power state. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l_doc-func-members}
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l_ga3a1c43d5225cc9a37e6617752de2374f}\index{Power Control Functions@{Power Control Functions}!nrf24l01\_power\_down@{nrf24l01\_power\_down}}
+\index{nrf24l01\_power\_down@{nrf24l01\_power\_down}!Power Control Functions@{Power Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_power\_down()}{nrf24l01\_power\_down()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l_ga3a1c43d5225cc9a37e6617752de2374f} 
+uint8\+\_\+t nrf24l01\+\_\+power\+\_\+down (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Power down the n\+RF24\+L01 device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Powers down the device to minimize current consumption. All register contents are maintained during power down. \Hypertarget{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l_ga8edd849b4f17a7679ee6425917c7222b}\index{Power Control Functions@{Power Control Functions}!nrf24l01\_power\_up@{nrf24l01\_power\_up}}
+\index{nrf24l01\_power\_up@{nrf24l01\_power\_up}!Power Control Functions@{Power Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_power\_up()}{nrf24l01\_power\_up()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l_ga8edd849b4f17a7679ee6425917c7222b} 
+uint8\+\_\+t nrf24l01\+\_\+power\+\_\+up (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Power up the n\+RF24\+L01 device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Powers up the device and waits for power-\/up settling time. Device must be powered up before any RF operation. 

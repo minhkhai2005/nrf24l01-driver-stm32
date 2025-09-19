@@ -1,0 +1,431 @@
+\doxysection{nrf24l01.\+h File Reference}
+\hypertarget{nrf24l01_8h}{}\label{nrf24l01_8h}\index{nrf24l01.h@{nrf24l01.h}}
+
+
+n\+RF24\+L01 Wireless Transceiver Driver for STM32  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}main.\+h"{}}\newline
+{\ttfamily \#include "{}stm32f1xx\+\_\+hal.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structnrf24l01__data__pipe}{nrf24l01\+\_\+data\+\_\+pipe}}
+\begin{DoxyCompactList}\small\item\em Data pipe configuration structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}}
+\begin{DoxyCompactList}\small\item\em Main n\+RF24\+L01 device configuration structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries EMPTY\+\_\+\+DATA}~(uint8\+\_\+t \texorpdfstring{$\ast$}{*})0x\+FF
+\begin{DoxyCompactList}\small\item\em Empty data placeholder for uninitialized pointers. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga76ea3cf49247a07c54b3db005a3c7f57}{CONFIG}}~0x00
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gaa84a282351a2c9b83dd653df6ac59216}{EN\+\_\+\+AA}}~0x01
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gab6b2378ce9cab6ccafb6d30c774c5307}{EN\+\_\+\+RXADDR}}~0x02
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gaf5ef355ba3eca336db1285cab353ddc2}{SETUP\+\_\+\+AW}}~0x03
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga2188309b3eceeae158dd64109cd919aa}{SETUP\+\_\+\+RETR}}~0x04
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga5c4da84e4a01531aa9f5c3e617848d66}{RF\+\_\+\+CH}}~0x05
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gad95edb7665f39454d7d7fd436301712b}{RF\+\_\+\+SETUP}}~0x06
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga59279bee44f34d08b3cbf3a89fb0d8d9}{STATUS}}~0x07
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga491468eaa7f2db84c152709b0b5fb1aa}{OBSERVE\+\_\+\+TX}}~0x08
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga5fda2e88ceb5bbd2c7aa7a30da279f79}{PRD}}~0x09
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gadc82a1b0dee303d8b783b9b9a89ae5aa}{RX\+\_\+\+ADDR\+\_\+\+P0}}~0x0A
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gad4b44f18e4b27b07af84783d8f11726d}{RX\+\_\+\+ADDR\+\_\+\+P1}}~0x0B
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gac10ad4b1d3ace06cc269098d1863f411}{RX\+\_\+\+ADDR\+\_\+\+P2}}~0x0C
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga01228e7b997954bc9d715c8289731181}{RX\+\_\+\+ADDR\+\_\+\+P3}}~0x0D
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gafc579afe21136cd3f72b3ac805086726}{RX\+\_\+\+ADDR\+\_\+\+P4}}~0x0E
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga49dfc07335896551e8c7797594658b07}{RX\+\_\+\+ADDR\+\_\+\+P5}}~0x0F
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gaa734c6e08b9f794436eacbabe466a6c4}{TX\+\_\+\+ADDR}}~0x10
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga060e61d8f6e7ad28984540faa85cdecf}{RX\+\_\+\+PW\+\_\+\+P0}}~0x11
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gaa260ec97512905cec17f8ade82bc550d}{RX\+\_\+\+PW\+\_\+\+P1}}~0x12
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga38a4904a52517c8d339c689230a6567d}{RX\+\_\+\+PW\+\_\+\+P2}}~0x13
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga44bdf6946c1ae047ea2a2c981244d4d8}{RX\+\_\+\+PW\+\_\+\+P3}}~0x14
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga5cdda00ab52df1537b6b5d61ef88ba8f}{RX\+\_\+\+PW\+\_\+\+P4}}~0x15
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga9ce52902779e18d4fed3685b0f8be582}{RX\+\_\+\+PW\+\_\+\+P5}}~0x16
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_ga9e5c9878194f462bf7a46ca8a7b8f9d2}{FIFO\+\_\+\+STATUS}}~0x17
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gae79cde384e0b6a5549efb001589a79ec}{DYNPD}}~0x1C
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r_s_gadf81f7b30b6c08465ce704956b446a2d}{FEATURE}}~0x1D
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga5f30d66a7a448dc83fd695dbd3efbe31}{MASK\+\_\+\+RX\+\_\+\+DR}}~0b01000000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gad5f819a0030605463504bd2599579b4c}{MASK\+\_\+\+TX\+\_\+\+DS}}~0b00100000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga13e9f541027a36c23211d6c8f3b33a92}{MASK\+\_\+\+MAX\+\_\+\+RT}}~0b00010000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaece57618cf42f6b1b520341ef19a66f8}{EN\+\_\+\+CRC}}~0b00001000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga253dd73b17f0ea7f71e55f52e796836a}{CRCO}}~0b00000100
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaf0dbd9e4c17ba0db357fcb2cedd4aa6d}{PWR\+\_\+\+UP}}~0b00000010
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga0b4d92f3ecccb150d4cb1cb5d0f9d4e6}{PRIM\+\_\+\+RX}}~0b00000001
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gae28c4601af8b2f85827386fe9a27f9fa}{ENAA\+\_\+\+P5}}~0b00100000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga3b5bebd442d3a0351e85100a69244810}{ENAA\+\_\+\+P4}}~0b00010000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaade4fe5e884e4f5868daf2c706d72f5e}{ENAA\+\_\+\+P3}}~0b00001000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga8b3d7771adbc5bc2bd8846f00aa39a5a}{ENAA\+\_\+\+P2}}~0b00000100
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gadfa71d5ebb7107d673674bb10279d9c6}{ENAA\+\_\+\+P1}}~0b00000010
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga2cb97a8f9d05bb511d45d7212174769d}{ENAA\+\_\+\+P0}}~0b00000001
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaf93d9be6cb2bac887584ab7f6805f7e9}{ERX\+\_\+\+P5}}~0b00100000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga2820784961d22e1ae9499090df929ad1}{ERX\+\_\+\+P4}}~0b00010000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga4d8b431c5dd89b67113a461fe872189a}{ERX\+\_\+\+P3}}~0b00001000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga115f3c3d9c945bbd660c1ddcba58340d}{ERX\+\_\+\+P2}}~0b00000100
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga636432986a9972c8fc964def06ffdc79}{ERX\+\_\+\+P1}}~0b00000010
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga25999eca8c745b41102fb31489a90211}{ERX\+\_\+\+P0}}~0b00000001
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gabd18e97392c5401ae01a906e1567da88}{AW}}~0b00000011
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaecb7a733c5b52b50a4f079255da00f49}{AW0}}~0b00000001
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gab418fcf7bf3fb3657fc2335fa3435c38}{AW1}}~0b00000010
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaa9701b150e0589afb638c82a498d1dcb}{ARD}}~0b11110000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga343a83e331efc598cb94172f282f5fdf}{ARD0}}~0b00010000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga6dd9959a664e89cec5637730a63e1153}{ARD1}}~0b00100000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga023fb03c5d09d5dc825c4e98bf375335}{ARD2}}~0b01000000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga6ab776bb7a74c634170be30d1712636d}{ARD3}}~0b10000000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga14727f92df7a9466f732141f23b9c252}{ARC}}~0b00001111
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaaf82b865019d7fa9a6084b3e0bd96624}{ARC0}}~0b00000001
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gad4cba057e188198692b99949805c59c6}{ARC1}}~0b00000010
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga8ce4c4e77866f4ac426c396f5b8dffed}{ARC2}}~0b00000100
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gae1a29c4eb133001e7c11d10082095027}{ARC3}}~0b00001000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga599a78b233b07562724a6f2de8ea92a4}{RF\+\_\+\+CH0}}~0b00000001
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga15ba5c6d83ee792e016b67efb6440428}{RF\+\_\+\+CH1}}~0b00000010
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga5d3669e6653db48bad9feedfd5f4e190}{RF\+\_\+\+CH2}}~0b00000100
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga075795ff6fda31f07cd2301792489932}{RF\+\_\+\+CH3}}~0b00001000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga424b3496e3e9b79399ee50b3791de345}{RF\+\_\+\+CH4}}~0b00010000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga00223f4335dc874480945435149c7b47}{RF\+\_\+\+CH5}}~0b00100000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gab9bd82f2874fb43b5a0165980741f18f}{RF\+\_\+\+CH6}}~0b01000000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaf76cfc0d6ed71259b4a237cbd8e30624}{PLL\+\_\+\+LOCK}}~0b00010000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga1447bd35f38d6cc6d6841ca29c514675}{RF\+\_\+\+DR}}~0b00001000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga1e9fa887f1cf285bc00c17e49569e5f5}{RF\+\_\+\+PWR}}~0b00000110
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga79a624eaa04efc1df9e05fb77142e269}{RF\+\_\+\+PWR0}}~0b00000010
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga9ef8b6a9d788c905195674100af554f6}{RF\+\_\+\+PWR1}}~0b00000100
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gad031c713aa7c96ca88a9710f25229495}{LNA\+\_\+\+HCURR}}~0b00000001
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga312d1f2745a86149b27cff7d61e715df}{RX\+\_\+\+DR}}~0b01000000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gab5f5243908a39ffd514fe701e9749bdc}{TX\+\_\+\+DS}}~0b00100000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gab4482ead4f3b452a032f63ac03ee1870}{MAX\+\_\+\+RT}}~0b00010000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaaafdcd7fe52991daff2385165e8547ab}{RX\+\_\+\+P\+\_\+\+NO}}~0b00001110
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga2758378be934a2feb3e5e6a311ed3183}{RX\+\_\+\+P\+\_\+\+NO0}}~0b00000010
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gabfee15e513bde8a34f27ae8bd6c79a4e}{RX\+\_\+\+P\+\_\+\+NO1}}~0b00000100
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga1764918a30d1b3f11feb76c210f50174}{RX\+\_\+\+P\+\_\+\+NO2}}~0b00001000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaf3b1baf3a7a57b7471443d1ff002c778}{TX\+\_\+\+FULL}}~0b00000001
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaf45c13e8941613c7eb931001ab964965}{PLOS\+\_\+\+CNT}}~0b11110000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gadbf113ae94eac64741be1092da6c79df}{PLOS\+\_\+\+CNT0}}~0b00010000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaa0ece51eab0ad0cc45a7b84625f95305}{PLOS\+\_\+\+CNT1}}~0b00100000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga908dc6133ae620d19dcdb458003ac85c}{PLOS\+\_\+\+CNT2}}~0b01000000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga78586dd0e95e8524d20d53b08ba3019a}{PLOS\+\_\+\+CNT3}}~0b10000000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaaae5ef9927daf8a4939cd2ed6ffff2ec}{ARC\+\_\+\+CNT}}~0b00001111
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaac3f4f07a26efe86067dd61aa7d996f2}{ARC\+\_\+\+CNT0}}~0b00000001
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga853d0fb404f31f1ef33577694f2d8941}{ARC\+\_\+\+CNT1}}~0b00000010
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga3d017505dae531159da8775c9c6d91a6}{ARC\+\_\+\+CNT2}}~0b00000100
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga5ae026f1e548a768bf48c5e760cb5fe6}{ARC\+\_\+\+CNT3}}~0b00001000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga1050140a3d78b059f809a424e0d9e1c7}{CD}}~0b00000001
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga506a58de7b75af27e3745db3e1e9733c}{TX\+\_\+\+REUSE}}~0b01000000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gaff743182d3cc16bed60c67b0313cfeec}{FIFO\+\_\+\+FULL}}~0b00100000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_gae4034d6a21b6646c8710d09e43bd9383}{TX\+\_\+\+EMPTY}}~0b00010000
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga70c7df60fd47492ea236dc14c1f9e216}{RX\+\_\+\+FULL}}~0b00000010
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga8e43dfdec50b513f49b623e9da3def46}{RX\+\_\+\+EMPTY}}~0b00000001
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga1b46f8336bda068b0759f70cceec3b65}{EN\+\_\+\+DPL}}~0b00000100
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga1a275ad559fa85d8278f06052baab004}{EN\+\_\+\+ACK\+\_\+\+PAY}}~0b00000010
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___b_i_t_m_a_s_k_s_ga2c72793d172b16436d7e0c0d9491bdae}{EN\+\_\+\+DYN\+\_\+\+ACK}}~0b00000001
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___c_o_m_m_a_n_d_s_gafb0b251378d3b14c508e51fd2c3157d6}{R\+\_\+\+REGISTER}}~0x00
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___c_o_m_m_a_n_d_s_ga3b68b214d5753039d2c156ad57cd7153}{W\+\_\+\+REGISTER}}~0x20
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___c_o_m_m_a_n_d_s_ga462d8c2314b823b724574c1ca73225a6}{R\+\_\+\+RX\+\_\+\+PAYLOAD}}~0x61
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___c_o_m_m_a_n_d_s_gafd12673bc8ca8559b0eee395e8845982}{W\+\_\+\+TX\+\_\+\+PAYLOAD}}~0x\+A0
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___c_o_m_m_a_n_d_s_gabce47e8066832b6ac4e18162a79859b4}{FLUSH\+\_\+\+TX}}~0x\+E1
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___c_o_m_m_a_n_d_s_gab2418a6171d7f1eefd458927fdfe7057}{FLUSH\+\_\+\+RX}}~0x\+E2
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___c_o_m_m_a_n_d_s_ga2f1d9bb858232e8b1494b60aa9a7d25a}{REUSE\+\_\+\+TX\+\_\+\+PL}}~0x\+E3
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___c_o_m_m_a_n_d_s_gad37ed8e28abe573e992766b0e3b0353b}{ACTIVATE}}~0x50
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___c_o_m_m_a_n_d_s_ga14ea186f093047db160cee642e5bd901}{R\+\_\+\+RX\+\_\+\+PL\+\_\+\+WID}}~0x60
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___c_o_m_m_a_n_d_s_ga83176d6f9c44eb5e6738176b667f6430}{W\+\_\+\+ACK\+\_\+\+PAYLOAD}}~0x\+A8
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___c_o_m_m_a_n_d_s_ga974e6df1de481bc7796a2c1c96b6c9ff}{W\+\_\+\+TX\+\_\+\+PAYLOAD\+\_\+\+NOACK}}~0x\+B0
+\item 
+\#define \mbox{\hyperlink{group___n_r_f24_l01___c_o_m_m_a_n_d_s_ga700f88377bf36711b711f69b06c52f5d}{NOP}}~0x\+FF
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga543c6edfa643a5439fb2309d570d2538}{nrf24l01\+\_\+air\+\_\+data\+\_\+rate}} \{ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga543c6edfa643a5439fb2309d570d2538a4f95c89670e49ec555d689d057d4cfed}{nrf24l01\+\_\+air\+\_\+data\+\_\+rate\+\_\+1mbps}} = 0
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga543c6edfa643a5439fb2309d570d2538a66290642e72201f6790e7c0b03caae62}{nrf24l01\+\_\+air\+\_\+data\+\_\+rate\+\_\+2mbps}}
+ \}
+\begin{DoxyCompactList}\small\item\em Air data rate configuration. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga935205f670283e8df8329bb93e2f20b2}{nrf24l01\+\_\+rf\+\_\+output\+\_\+power}} \{ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga935205f670283e8df8329bb93e2f20b2add097352b7274fe8deccec40303688c4}{nrf24l01\+\_\+rf\+\_\+output\+\_\+power\+\_\+minus18dbm}} = 0
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga935205f670283e8df8329bb93e2f20b2ac60d951a77c83af4af18fe6824fcf9fc}{nrf24l01\+\_\+rf\+\_\+output\+\_\+power\+\_\+minus12dbm}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga935205f670283e8df8329bb93e2f20b2a76cf213bc1d0b50bcb32df0bc828aa35}{nrf24l01\+\_\+rf\+\_\+output\+\_\+power\+\_\+minus6dbm}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga935205f670283e8df8329bb93e2f20b2a572e04db99ae78cfd15ba9b0bcd0ac7c}{nrf24l01\+\_\+rf\+\_\+output\+\_\+power\+\_\+0dbm}}
+ \}
+\begin{DoxyCompactList}\small\item\em RF output power levels. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga9d8202711d7010b3f17cfb7abc9820ed}{nrf24l01\+\_\+address\+\_\+width}} \{ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga9d8202711d7010b3f17cfb7abc9820eda2680b4f915898eca192ec445c76d5f11}{nrf24l01\+\_\+address\+\_\+width\+\_\+3bytes}} = 3
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga9d8202711d7010b3f17cfb7abc9820edaee18038c5b61179af800e16c48f3d06c}{nrf24l01\+\_\+address\+\_\+width\+\_\+4bytes}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga9d8202711d7010b3f17cfb7abc9820eda63630e8320158ac65eba93d9a8ed49ed}{nrf24l01\+\_\+address\+\_\+width\+\_\+5bytes}}
+ \}
+\begin{DoxyCompactList}\small\item\em Address width configuration. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ga816f505b2c3ea97c09731b441dae4db6}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay}} \{ \newline
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a31088c9eb3a74ff3993b8eab650bcebe}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+250us}} = 0
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a0ba255840cfa4ee719ea1141f5697726}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+500us}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6ac884b5bdfad7bd505bfa8cb4a57ff157}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+750us}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6af13665924b1f69be18a3b92f67c3f26e}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+1000us}}
+, \newline
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a42de139fb6357de359378aa5b882ba2b}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+1250us}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a32f5448de335eedaa01116b1124fce1c}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+1500us}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a47d842bcd01f4f70ffc7debb44af8d7d}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+1750us}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a46570de8dedb5300c2ec0f826f8a0c4c}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+2000us}}
+, \newline
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6ae67caa408173716b3195afef482694a2}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+2250us}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6af039647322e32f54e15f8e4090933971}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+2500us}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a14b3ce9c2a607851202779ec11061467}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+2750us}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a5bf892e41b7b27da911cd57936ca5139}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+3000us}}
+, \newline
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6ad0d8646c58eefa8d53cc6fcab74edc21}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+3250us}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a77c5b7c0184e7cb918ea1867ac63343b}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+3500us}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a3ad29fa6a21913f8f0a0d8b4c78211a2}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+3750us}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gga816f505b2c3ea97c09731b441dae4db6a5282b5d540db97ce0dcd27a9dd8be62b}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+delay\+\_\+4000us}}
+ \}
+\begin{DoxyCompactList}\small\item\em Auto retransmit delay settings. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gad8ffddaf2b07a103805f32ad3a50b50f}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count}} \{ \newline
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fae8116dfb867cabb9781ef502e820c5c6}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+disable}} = 0
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fabcaf4f6ffed3b9d187c0e30e7634b002}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+1}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa023f3d7ddd64d275c69bf84a91f7a637}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+2}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa3227e83a73f369152296705c41a8f76c}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+3}}
+, \newline
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa35fc78d1c2221e9be95a41baad23df22}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+4}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa9b2b4d45068dd3ed1814dbf2d1188c81}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+5}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50faa427098dcf1647bc76d96843fd153de1}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+6}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa1640f3a8cad4946450068bea6721419c}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+7}}
+, \newline
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fae6b9c1d93658b7500c9a1694cd91f847}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+8}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fae4cea9715015c2107504af06ec8b3e52}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+9}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa58146ff0efcfdf68d0d315523e2b7234}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+10}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa3df06c6c9caabf72f41bf29047216d5b}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+11}}
+, \newline
+\mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fa877a5b35d43b71ca4b2f75ea90b6f835}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+12}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fae8094ebd28b73fdcbf46e716d9511c89}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+13}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fac27dd6cc4236bb6175c21f4a05c80f9f}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+14}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggad8ffddaf2b07a103805f32ad3a50b50fad1fe37dba3521d9fe4a261a09607cbeb}{nrf24l01\+\_\+auto\+\_\+retransmit\+\_\+count\+\_\+15}}
+ \}
+\begin{DoxyCompactList}\small\item\em Auto retransmit count settings. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gae5ae868b1e3e397e2bca9059734b331a}{nrf24l01\+\_\+irq}} \{ \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggae5ae868b1e3e397e2bca9059734b331aa828e64e7f221de0567bfe5699f7e7cc8}{nrf24l01\+\_\+irq\+\_\+rx\+\_\+data\+\_\+ready}} = 0
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggae5ae868b1e3e397e2bca9059734b331aa92d1a0f6ae9ebb618fcc432b4b477237}{nrf24l01\+\_\+irq\+\_\+tx\+\_\+data\+\_\+sent}}
+, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_ggae5ae868b1e3e397e2bca9059734b331aabee72fe440eb439cefcd95d8167107c4}{nrf24l01\+\_\+maximum\+\_\+retransmitted}}
+ \}
+\begin{DoxyCompactList}\small\item\em Interrupt types. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga93ef724a09308a7cb33d1f6d99d17fcf}{nrf24l01\+\_\+get\+\_\+default\+\_\+config}} ()
+\begin{DoxyCompactList}\small\item\em Get default device configuration. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga2987d1df9ae2edb18ffdb9b5dd43c90c}{nrf24l01\+\_\+init}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Initialize n\+RF24\+L01 device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_gae29cae51dac5b4434b04b0e4c7c2f821}{nrf24l01\+\_\+deinit}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Deinitialize n\+RF24\+L01 device. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga7eff31f8bd227fc90ab6f8fd82bd5501}{nrf24l01\+\_\+init\+\_\+data\+\_\+pipe}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t pipe\+\_\+number)
+\begin{DoxyCompactList}\small\item\em Initialize specific data pipe. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_gabb08dd9573abd55c08fab1ea34f13c08}{nrf24l01\+\_\+delay}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint16\+\_\+t us)
+\begin{DoxyCompactList}\small\item\em Generate microsecond delay. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga7d07306b43d1be8d52de88df78e7a81f}{nrf24l01\+\_\+chip\+\_\+select}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Select n\+RF24\+L01 chip (CSN low) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga59d940b996f1d15d7e72031b9af6ba55}{nrf24l01\+\_\+chip\+\_\+deselect}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Deselect n\+RF24\+L01 chip (CSN high) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga2a460c95a56915aae0e682bec28bdafb}{nrf24l01\+\_\+chip\+\_\+enable}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Enable n\+RF24\+L01 chip (CE high) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_ga453868646c931f32d3b9561e32f00e6e}{nrf24l01\+\_\+chip\+\_\+disable}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Disable n\+RF24\+L01 chip (CE low) \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___l_o_w___l_e_v_e_l_gae046b212e91886418d20da15085166ec}{nrf24l01\+\_\+send\+\_\+command}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t command)
+\begin{DoxyCompactList}\small\item\em Send single byte command. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_ga796e04245ffef5f2d82389e26a7abb40}{nrf24l01\+\_\+read\+\_\+register}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Read from n\+RF24\+L01 register. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_gaf8dbe49557d7b34519895a2ec52f35c1}{nrf24l01\+\_\+write\+\_\+register}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Write to n\+RF24\+L01 register. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga5f9de8a2ac1cbe154bf51187294a8fe8}{nrf24l01\+\_\+read\+\_\+rx\+\_\+payload}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Read RX payload from FIFO. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga9a15f7cf36b6defbd1b225effebfa553}{nrf24l01\+\_\+write\+\_\+tx\+\_\+payload}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Write TX payload to FIFO. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_gadea150b44704cb0637b6fddd1c3e88e6}{nrf24l01\+\_\+write\+\_\+ack\+\_\+payload}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint8\+\_\+t pipe, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Write ACK payload for specific pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga95991b25fca7f1fb797bff6e18cb6548}{nrf24l01\+\_\+write\+\_\+tx\+\_\+payload\+\_\+no\+\_\+ack}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Write TX payload without expecting ACK. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga1df89c9b18bc724c308cab63782bcc0d}{nrf24l01\+\_\+read\+\_\+rx\+\_\+payload\+\_\+width}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Read top RX payload width. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga866616f274096520b6c45b690cc7ba43}{nrf24l01\+\_\+flush\+\_\+tx}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Flush TX FIFO. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga4dda52b666111b0b1057f1305314fa2e}{nrf24l01\+\_\+flush\+\_\+rx}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Flush RX FIFO. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___f_i_f_o___c_o_n_t_r_o_l_ga3c41ea861c90977f3804062acc55e079}{nrf24l01\+\_\+reuse\+\_\+tx\+\_\+payload}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Reuse last transmitted payload. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_ga3fbb42aa6b96abf320f6b7598a3f0a1d}{nrf24l01\+\_\+activate\+\_\+extra\+\_\+features}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Activate extra features. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_ga6b1c1bd9599bd9069d4617da30705ed3}{nrf24l01\+\_\+nop}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em No operation command. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l_ga8edd849b4f17a7679ee6425917c7222b}{nrf24l01\+\_\+power\+\_\+up}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Power up the n\+RF24\+L01 device. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_o_w_e_r___c_o_n_t_r_o_l_ga3a1c43d5225cc9a37e6617752de2374f}{nrf24l01\+\_\+power\+\_\+down}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Power down the n\+RF24\+L01 device. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga36d58fe06759972caf9c7a6334e7bfd3}{nrf24l01\+\_\+transmit}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Configure device for transmit mode. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga4c6f0e16c6dcef30ccff166607835f1e}{nrf24l01\+\_\+listen}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Configure device for receive mode. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_gae6985d003320b2dbc491049a97680819}{nrf24l01\+\_\+dynamic\+\_\+payload\+\_\+length}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable dynamic payload length. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_gae6d8ff5807aa846adae32d2bd9e2719f}{nrf24l01\+\_\+payload\+\_\+with\+\_\+ack}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable payload with ACK. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_ga0e644feb15b0027b8951ee15da977539}{nrf24l01\+\_\+dynamic\+\_\+ack}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable dynamic ACK. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga7f87827b095916e98b7e40b95faf0437}{nrf24l01\+\_\+data\+\_\+pipe\+\_\+dynamic\+\_\+payload\+\_\+length}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t pipe\+\_\+number, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable dynamic payload length for specific pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gae689b3cc45f5fc87c9ab5e5fde30386c}{nrf24l01\+\_\+data\+\_\+pipe\+\_\+enable}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t pipe\+\_\+number, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable specific data pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga19f14a73daca5f37d2f82f07972bbecc}{nrf24l01\+\_\+data\+\_\+pipe\+\_\+auto\+\_\+ack}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t pipe\+\_\+number, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable auto-\/acknowledgment for specific pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga236d8daf002dce8ad435c162a6fd5474}{nrf24l01\+\_\+data\+\_\+pipe\+\_\+address}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t pipe\+\_\+number, uint8\+\_\+t \texorpdfstring{$\ast$}{*}address, uint8\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Set receive address for specific data pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gaa4f2b1843d94a7c0ca7019fe72b5412d}{nrf24l01\+\_\+data\+\_\+pipe\+\_\+payload\+\_\+width}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t pipe\+\_\+number, uint8\+\_\+t width)
+\begin{DoxyCompactList}\small\item\em Set payload width for specific data pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l_ga6c7f8b1aeea8d1c5f022979c8b3662dc}{nrf24l01\+\_\+interrupt}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gae5ae868b1e3e397e2bca9059734b331a}{nrf24l01\+\_\+irq}} irq, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable specific interrupt. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___i_n_t_e_r_r_u_p_t___c_o_n_t_r_o_l_gaf6ad179460ef68a2b9eafc6ff044cf1c}{nrf24l01\+\_\+clear\+\_\+interrupt\+\_\+flag}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, \mbox{\hyperlink{group___n_r_f24_l01___e_n_u_m_s_gae5ae868b1e3e397e2bca9059734b331a}{nrf24l01\+\_\+irq}} irq)
+\begin{DoxyCompactList}\small\item\em Clear specific interrupt flag. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+n\+RF24\+L01 Wireless Transceiver Driver for STM32 
+
+\begin{DoxyAuthor}{Author}
+Trần Minh Khải 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Date}
+18/9/25 
+\end{DoxyDate}
+\begin{DoxyVersion}{Version}
+1.\+0
+\end{DoxyVersion}
+This library provides a comprehensive driver for the n\+RF24\+L01 2.\+4\+GHz wireless transceiver module. It supports all major features including multi-\/pipe communication, auto-\/acknowledgment, dynamic payload lengths, and various power/data rate configurations.
+
+\begin{DoxyNote}{Note}
+This driver is designed for STM32 microcontrollers using HAL library
+\end{DoxyNote}
+\begin{DoxyParagraph}{Example Usage\+:}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{comment}{//\ Initialize\ device\ with\ default\ configuration}}
+\DoxyCodeLine{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\_device}}\ nrf\ =\ \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga93ef724a09308a7cb33d1f6d99d17fcf}{nrf24l01\_get\_default\_config}}();}
+\DoxyCodeLine{nrf.\mbox{\hyperlink{structnrf24l01__device_a7c47ab6b83fb560e7460fa89c4523e09}{spi}}\ =\ \&hspi1;}
+\DoxyCodeLine{nrf.ce\_port\ =\ GPIOA;}
+\DoxyCodeLine{nrf.ce\_pin\ =\ 8;}
+\DoxyCodeLine{nrf.\mbox{\hyperlink{structnrf24l01__device_a9adb103a156701c367f27ea75c193782}{csn\_port}}\ =\ GPIOA;}
+\DoxyCodeLine{nrf.\mbox{\hyperlink{structnrf24l01__device_aa5dcec097d6d7f9bf501eda66cf77022}{csn\_pin}}\ =\ 9;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{comment}{//\ Initialize\ the\ device}}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ (\mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga2987d1df9ae2edb18ffdb9b5dd43c90c}{nrf24l01\_init}}(\&nrf)\ ==\ 0)\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Configure\ for\ transmission}}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ tx\_addr[]\ =\ \{0xE7,\ 0xE7,\ 0xE7,\ 0xE7,\ 0xE7\};}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga236d8daf002dce8ad435c162a6fd5474}{nrf24l01\_data\_pipe\_address}}(\&nrf,\ 0,\ tx\_addr,\ 5);}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga36d58fe06759972caf9c7a6334e7bfd3}{nrf24l01\_transmit}}(\&nrf);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{comment}{//\ Send\ data}}
+\DoxyCodeLine{\ \ \ \ uint8\_t\ data[]\ =\ \textcolor{stringliteral}{"{}Hello\ World"{}};}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga9a15f7cf36b6defbd1b225effebfa553}{nrf24l01\_write\_tx\_payload}}(\&nrf,\ data,\ \textcolor{keyword}{sizeof}(data));}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+ 
+\end{DoxyParagraph}

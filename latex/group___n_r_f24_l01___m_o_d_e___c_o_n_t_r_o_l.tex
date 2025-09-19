@@ -1,0 +1,61 @@
+\doxysubsection{Mode Control Functions }
+\hypertarget{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l}{}\label{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l}\index{Mode Control Functions@{Mode Control Functions}}
+
+
+Functions for switching between TX and RX modes.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga36d58fe06759972caf9c7a6334e7bfd3}{nrf24l01\+\_\+transmit}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Configure device for transmit mode. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga4c6f0e16c6dcef30ccff166607835f1e}{nrf24l01\+\_\+listen}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Configure device for receive mode. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Functions for switching between TX and RX modes. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_doc-func-members}
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga4c6f0e16c6dcef30ccff166607835f1e}\index{Mode Control Functions@{Mode Control Functions}!nrf24l01\_listen@{nrf24l01\_listen}}
+\index{nrf24l01\_listen@{nrf24l01\_listen}!Mode Control Functions@{Mode Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_listen()}{nrf24l01\_listen()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga4c6f0e16c6dcef30ccff166607835f1e} 
+uint8\+\_\+t nrf24l01\+\_\+listen (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Configure device for receive mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Configures the device as a primary receiver (PRX). Device will listen for incoming packets on enabled data pipes. \Hypertarget{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga36d58fe06759972caf9c7a6334e7bfd3}\index{Mode Control Functions@{Mode Control Functions}!nrf24l01\_transmit@{nrf24l01\_transmit}}
+\index{nrf24l01\_transmit@{nrf24l01\_transmit}!Mode Control Functions@{Mode Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_transmit()}{nrf24l01\_transmit()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___m_o_d_e___c_o_n_t_r_o_l_ga36d58fe06759972caf9c7a6334e7bfd3} 
+uint8\+\_\+t nrf24l01\+\_\+transmit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Configure device for transmit mode. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Configures the device as a primary transmitter (PTX). Device will be ready to transmit packets. 

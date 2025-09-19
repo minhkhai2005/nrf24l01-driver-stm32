@@ -1,0 +1,87 @@
+\doxysubsection{Feature Control Functions }
+\hypertarget{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l}{}\label{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l}\index{Feature Control Functions@{Feature Control Functions}}
+
+
+Functions for enabling/disabling advanced features.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_gae6985d003320b2dbc491049a97680819}{nrf24l01\+\_\+dynamic\+\_\+payload\+\_\+length}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable dynamic payload length. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_gae6d8ff5807aa846adae32d2bd9e2719f}{nrf24l01\+\_\+payload\+\_\+with\+\_\+ack}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable payload with ACK. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_ga0e644feb15b0027b8951ee15da977539}{nrf24l01\+\_\+dynamic\+\_\+ack}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable dynamic ACK. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Functions for enabling/disabling advanced features. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_doc-func-members}
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_ga0e644feb15b0027b8951ee15da977539}\index{Feature Control Functions@{Feature Control Functions}!nrf24l01\_dynamic\_ack@{nrf24l01\_dynamic\_ack}}
+\index{nrf24l01\_dynamic\_ack@{nrf24l01\_dynamic\_ack}!Feature Control Functions@{Feature Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_dynamic\_ack()}{nrf24l01\_dynamic\_ack()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_ga0e644feb15b0027b8951ee15da977539} 
+uint8\+\_\+t nrf24l01\+\_\+dynamic\+\_\+ack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t}]{enable}{}\end{DoxyParamCaption})}
+
+
+
+Enable/disable dynamic ACK. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em enable} & 1 to enable, 0 to disable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+When enabled, allows selective disable of auto-\/acknowledgment for individual packets using W\+\_\+\+TX\+\_\+\+PAYLOAD\+\_\+\+NOACK command. \Hypertarget{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_gae6985d003320b2dbc491049a97680819}\index{Feature Control Functions@{Feature Control Functions}!nrf24l01\_dynamic\_payload\_length@{nrf24l01\_dynamic\_payload\_length}}
+\index{nrf24l01\_dynamic\_payload\_length@{nrf24l01\_dynamic\_payload\_length}!Feature Control Functions@{Feature Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_dynamic\_payload\_length()}{nrf24l01\_dynamic\_payload\_length()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_gae6985d003320b2dbc491049a97680819} 
+uint8\+\_\+t nrf24l01\+\_\+dynamic\+\_\+payload\+\_\+length (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t}]{enable}{}\end{DoxyParamCaption})}
+
+
+
+Enable/disable dynamic payload length. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em enable} & 1 to enable, 0 to disable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+When enabled, payload length is determined dynamically based on the received packet rather than using fixed width. \Hypertarget{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_gae6d8ff5807aa846adae32d2bd9e2719f}\index{Feature Control Functions@{Feature Control Functions}!nrf24l01\_payload\_with\_ack@{nrf24l01\_payload\_with\_ack}}
+\index{nrf24l01\_payload\_with\_ack@{nrf24l01\_payload\_with\_ack}!Feature Control Functions@{Feature Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_payload\_with\_ack()}{nrf24l01\_payload\_with\_ack()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___f_e_a_t_u_r_e___c_o_n_t_r_o_l_gae6d8ff5807aa846adae32d2bd9e2719f} 
+uint8\+\_\+t nrf24l01\+\_\+payload\+\_\+with\+\_\+ack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t}]{enable}{}\end{DoxyParamCaption})}
+
+
+
+Enable/disable payload with ACK. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em enable} & 1 to enable, 0 to disable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+When enabled, allows sending payload data along with ACK packets. 

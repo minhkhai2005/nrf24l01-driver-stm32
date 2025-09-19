@@ -1,0 +1,141 @@
+\doxysubsection{Payload Access Functions }
+\hypertarget{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s}{}\label{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s}\index{Payload Access Functions@{Payload Access Functions}}
+
+
+Functions for reading and writing payload data.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga5f9de8a2ac1cbe154bf51187294a8fe8}{nrf24l01\+\_\+read\+\_\+rx\+\_\+payload}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Read RX payload from FIFO. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga9a15f7cf36b6defbd1b225effebfa553}{nrf24l01\+\_\+write\+\_\+tx\+\_\+payload}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Write TX payload to FIFO. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_gadea150b44704cb0637b6fddd1c3e88e6}{nrf24l01\+\_\+write\+\_\+ack\+\_\+payload}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint8\+\_\+t pipe, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Write ACK payload for specific pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga95991b25fca7f1fb797bff6e18cb6548}{nrf24l01\+\_\+write\+\_\+tx\+\_\+payload\+\_\+no\+\_\+ack}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Write TX payload without expecting ACK. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga1df89c9b18bc724c308cab63782bcc0d}{nrf24l01\+\_\+read\+\_\+rx\+\_\+payload\+\_\+width}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Read top RX payload width. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Functions for reading and writing payload data. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_doc-func-members}
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga5f9de8a2ac1cbe154bf51187294a8fe8}\index{Payload Access Functions@{Payload Access Functions}!nrf24l01\_read\_rx\_payload@{nrf24l01\_read\_rx\_payload}}
+\index{nrf24l01\_read\_rx\_payload@{nrf24l01\_read\_rx\_payload}!Payload Access Functions@{Payload Access Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_read\_rx\_payload()}{nrf24l01\_read\_rx\_payload()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga5f9de8a2ac1cbe154bf51187294a8fe8} 
+uint8\+\_\+t nrf24l01\+\_\+read\+\_\+rx\+\_\+payload (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint16\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Read RX payload from FIFO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em data} & Pointer to buffer for received payload \\
+\hline
+{\em length} & Number of bytes to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value 
+\end{DoxyReturn}
+\Hypertarget{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga1df89c9b18bc724c308cab63782bcc0d}\index{Payload Access Functions@{Payload Access Functions}!nrf24l01\_read\_rx\_payload\_width@{nrf24l01\_read\_rx\_payload\_width}}
+\index{nrf24l01\_read\_rx\_payload\_width@{nrf24l01\_read\_rx\_payload\_width}!Payload Access Functions@{Payload Access Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_read\_rx\_payload\_width()}{nrf24l01\_read\_rx\_payload\_width()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga1df89c9b18bc724c308cab63782bcc0d} 
+uint8\+\_\+t nrf24l01\+\_\+read\+\_\+rx\+\_\+payload\+\_\+width (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{}\end{DoxyParamCaption})}
+
+
+
+Read top RX payload width. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em data} & Pointer to store payload width value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value
+\end{DoxyReturn}
+Reads the payload width of the top RX payload in the RX FIFO. Used with dynamic payload length feature. \Hypertarget{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_gadea150b44704cb0637b6fddd1c3e88e6}\index{Payload Access Functions@{Payload Access Functions}!nrf24l01\_write\_ack\_payload@{nrf24l01\_write\_ack\_payload}}
+\index{nrf24l01\_write\_ack\_payload@{nrf24l01\_write\_ack\_payload}!Payload Access Functions@{Payload Access Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_write\_ack\_payload()}{nrf24l01\_write\_ack\_payload()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_gadea150b44704cb0637b6fddd1c3e88e6} 
+uint8\+\_\+t nrf24l01\+\_\+write\+\_\+ack\+\_\+payload (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint8\+\_\+t}]{pipe}{, }\item[{uint16\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Write ACK payload for specific pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em data} & Pointer to ACK payload data \\
+\hline
+{\em pipe} & Data pipe number (0-\/5) \\
+\hline
+{\em length} & Number of bytes to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value
+\end{DoxyReturn}
+Writes payload data that will be transmitted along with ACK packet for the specified data pipe. \Hypertarget{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga9a15f7cf36b6defbd1b225effebfa553}\index{Payload Access Functions@{Payload Access Functions}!nrf24l01\_write\_tx\_payload@{nrf24l01\_write\_tx\_payload}}
+\index{nrf24l01\_write\_tx\_payload@{nrf24l01\_write\_tx\_payload}!Payload Access Functions@{Payload Access Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_write\_tx\_payload()}{nrf24l01\_write\_tx\_payload()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga9a15f7cf36b6defbd1b225effebfa553} 
+uint8\+\_\+t nrf24l01\+\_\+write\+\_\+tx\+\_\+payload (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint16\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Write TX payload to FIFO. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em data} & Pointer to payload data to transmit \\
+\hline
+{\em length} & Number of bytes to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value 
+\end{DoxyReturn}
+\Hypertarget{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga95991b25fca7f1fb797bff6e18cb6548}\index{Payload Access Functions@{Payload Access Functions}!nrf24l01\_write\_tx\_payload\_no\_ack@{nrf24l01\_write\_tx\_payload\_no\_ack}}
+\index{nrf24l01\_write\_tx\_payload\_no\_ack@{nrf24l01\_write\_tx\_payload\_no\_ack}!Payload Access Functions@{Payload Access Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_write\_tx\_payload\_no\_ack()}{nrf24l01\_write\_tx\_payload\_no\_ack()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___p_a_y_l_o_a_d___a_c_c_e_s_s_ga95991b25fca7f1fb797bff6e18cb6548} 
+uint8\+\_\+t nrf24l01\+\_\+write\+\_\+tx\+\_\+payload\+\_\+no\+\_\+ack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint16\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Write TX payload without expecting ACK. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em data} & Pointer to payload data to transmit \\
+\hline
+{\em length} & Number of bytes to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value
+\end{DoxyReturn}
+Writes payload data that will be transmitted without requesting an acknowledgment from the receiver. 

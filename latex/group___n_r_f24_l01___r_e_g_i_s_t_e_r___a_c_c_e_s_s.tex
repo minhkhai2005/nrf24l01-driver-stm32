@@ -1,0 +1,72 @@
+\doxysubsection{Register Access Functions }
+\hypertarget{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s}{}\label{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s}\index{Register Access Functions@{Register Access Functions}}
+
+
+Functions for reading and writing registers.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_ga796e04245ffef5f2d82389e26a7abb40}{nrf24l01\+\_\+read\+\_\+register}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Read from n\+RF24\+L01 register. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_gaf8dbe49557d7b34519895a2ec52f35c1}{nrf24l01\+\_\+write\+\_\+register}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t reg, uint8\+\_\+t \texorpdfstring{$\ast$}{*}data, uint16\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Write to n\+RF24\+L01 register. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Functions for reading and writing registers. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_doc-func-members}
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_ga796e04245ffef5f2d82389e26a7abb40}\index{Register Access Functions@{Register Access Functions}!nrf24l01\_read\_register@{nrf24l01\_read\_register}}
+\index{nrf24l01\_read\_register@{nrf24l01\_read\_register}!Register Access Functions@{Register Access Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_read\_register()}{nrf24l01\_read\_register()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_ga796e04245ffef5f2d82389e26a7abb40} 
+uint8\+\_\+t nrf24l01\+\_\+read\+\_\+register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t}]{reg}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint16\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Read from n\+RF24\+L01 register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em reg} & Register address to read from \\
+\hline
+{\em data} & Pointer to buffer for received data \\
+\hline
+{\em length} & Number of bytes to read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value 
+\end{DoxyReturn}
+\Hypertarget{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_gaf8dbe49557d7b34519895a2ec52f35c1}\index{Register Access Functions@{Register Access Functions}!nrf24l01\_write\_register@{nrf24l01\_write\_register}}
+\index{nrf24l01\_write\_register@{nrf24l01\_write\_register}!Register Access Functions@{Register Access Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_write\_register()}{nrf24l01\_write\_register()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___r_e_g_i_s_t_e_r___a_c_c_e_s_s_gaf8dbe49557d7b34519895a2ec52f35c1} 
+uint8\+\_\+t nrf24l01\+\_\+write\+\_\+register (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t}]{reg}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{data}{, }\item[{uint16\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Write to n\+RF24\+L01 register. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em reg} & Register address to write to \\
+\hline
+{\em data} & Pointer to data buffer to write \\
+\hline
+{\em length} & Number of bytes to write \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value 
+\end{DoxyReturn}

@@ -1,0 +1,108 @@
+\doxysubsection{Initialization Functions }
+\hypertarget{group___n_r_f24_l01___i_n_i_t}{}\label{group___n_r_f24_l01___i_n_i_t}\index{Initialization Functions@{Initialization Functions}}
+
+
+Functions for device initialization and configuration.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga93ef724a09308a7cb33d1f6d99d17fcf}{nrf24l01\+\_\+get\+\_\+default\+\_\+config}} ()
+\begin{DoxyCompactList}\small\item\em Get default device configuration. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga2987d1df9ae2edb18ffdb9b5dd43c90c}{nrf24l01\+\_\+init}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Initialize n\+RF24\+L01 device. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_gae29cae51dac5b4434b04b0e4c7c2f821}{nrf24l01\+\_\+deinit}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Deinitialize n\+RF24\+L01 device. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___i_n_i_t_ga7eff31f8bd227fc90ab6f8fd82bd5501}{nrf24l01\+\_\+init\+\_\+data\+\_\+pipe}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t pipe\+\_\+number)
+\begin{DoxyCompactList}\small\item\em Initialize specific data pipe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Functions for device initialization and configuration. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group___n_r_f24_l01___i_n_i_t_doc-func-members}
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___n_r_f24_l01___i_n_i_t_gae29cae51dac5b4434b04b0e4c7c2f821}\index{Initialization Functions@{Initialization Functions}!nrf24l01\_deinit@{nrf24l01\_deinit}}
+\index{nrf24l01\_deinit@{nrf24l01\_deinit}!Initialization Functions@{Initialization Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_deinit()}{nrf24l01\_deinit()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___i_n_i_t_gae29cae51dac5b4434b04b0e4c7c2f821} 
+void nrf24l01\+\_\+deinit (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Deinitialize n\+RF24\+L01 device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure\\
+\hline
+\end{DoxyParams}
+Powers down the device and resets control pins to safe states. \Hypertarget{group___n_r_f24_l01___i_n_i_t_ga93ef724a09308a7cb33d1f6d99d17fcf}\index{Initialization Functions@{Initialization Functions}!nrf24l01\_get\_default\_config@{nrf24l01\_get\_default\_config}}
+\index{nrf24l01\_get\_default\_config@{nrf24l01\_get\_default\_config}!Initialization Functions@{Initialization Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_get\_default\_config()}{nrf24l01\_get\_default\_config()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___i_n_i_t_ga93ef724a09308a7cb33d1f6d99d17fcf} 
+\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} nrf24l01\+\_\+get\+\_\+default\+\_\+config (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Get default device configuration. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{structnrf24l01__device}{nrf24l01\+\_\+device} Default configuration structure
+\end{DoxyReturn}
+Returns a device structure with sensible default values\+:
+\begin{DoxyItemize}
+\item Power down mode
+\item 5-\/byte address width
+\item Channel 2 (2.\+402 GHz)
+\item 1 Mbps data rate
+\item 0 d\+Bm output power
+\item Auto retransmit\+: 250µs delay, 3 retries 
+\end{DoxyItemize}\Hypertarget{group___n_r_f24_l01___i_n_i_t_ga2987d1df9ae2edb18ffdb9b5dd43c90c}\index{Initialization Functions@{Initialization Functions}!nrf24l01\_init@{nrf24l01\_init}}
+\index{nrf24l01\_init@{nrf24l01\_init}!Initialization Functions@{Initialization Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_init()}{nrf24l01\_init()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___i_n_i_t_ga2987d1df9ae2edb18ffdb9b5dd43c90c} 
+uint8\+\_\+t nrf24l01\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Initialize n\+RF24\+L01 device. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Initializes the n\+RF24\+L01 module with the provided configuration. This function configures all registers according to the device structure and verifies successful communication with the module.
+
+\begin{DoxyNote}{Note}
+Make sure to configure SPI handle and GPIO pins before calling this function 
+\end{DoxyNote}
+\Hypertarget{group___n_r_f24_l01___i_n_i_t_ga7eff31f8bd227fc90ab6f8fd82bd5501}\index{Initialization Functions@{Initialization Functions}!nrf24l01\_init\_data\_pipe@{nrf24l01\_init\_data\_pipe}}
+\index{nrf24l01\_init\_data\_pipe@{nrf24l01\_init\_data\_pipe}!Initialization Functions@{Initialization Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_init\_data\_pipe()}{nrf24l01\_init\_data\_pipe()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___i_n_i_t_ga7eff31f8bd227fc90ab6f8fd82bd5501} 
+uint8\+\_\+t nrf24l01\+\_\+init\+\_\+data\+\_\+pipe (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+number}{}\end{DoxyParamCaption})}
+
+
+
+Initialize specific data pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em pipe\+\_\+number} & Data pipe number (0-\/5) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Configures a specific data pipe according to the settings in the device structure\textquotesingle{}s data\+\_\+pipe array. 

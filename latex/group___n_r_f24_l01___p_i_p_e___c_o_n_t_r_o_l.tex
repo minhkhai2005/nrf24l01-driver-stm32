@@ -1,0 +1,152 @@
+\doxysubsection{Data Pipe Control Functions }
+\hypertarget{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l}{}\label{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l}\index{Data Pipe Control Functions@{Data Pipe Control Functions}}
+
+
+Functions for managing individual data pipes.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga7f87827b095916e98b7e40b95faf0437}{nrf24l01\+\_\+data\+\_\+pipe\+\_\+dynamic\+\_\+payload\+\_\+length}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t pipe\+\_\+number, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable dynamic payload length for specific pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gae689b3cc45f5fc87c9ab5e5fde30386c}{nrf24l01\+\_\+data\+\_\+pipe\+\_\+enable}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t pipe\+\_\+number, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable specific data pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga19f14a73daca5f37d2f82f07972bbecc}{nrf24l01\+\_\+data\+\_\+pipe\+\_\+auto\+\_\+ack}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t pipe\+\_\+number, uint8\+\_\+t enable)
+\begin{DoxyCompactList}\small\item\em Enable/disable auto-\/acknowledgment for specific pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga236d8daf002dce8ad435c162a6fd5474}{nrf24l01\+\_\+data\+\_\+pipe\+\_\+address}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t pipe\+\_\+number, uint8\+\_\+t \texorpdfstring{$\ast$}{*}address, uint8\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Set receive address for specific data pipe. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gaa4f2b1843d94a7c0ca7019fe72b5412d}{nrf24l01\+\_\+data\+\_\+pipe\+\_\+payload\+\_\+width}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device, uint8\+\_\+t pipe\+\_\+number, uint8\+\_\+t width)
+\begin{DoxyCompactList}\small\item\em Set payload width for specific data pipe. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Functions for managing individual data pipes. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_doc-func-members}
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga236d8daf002dce8ad435c162a6fd5474}\index{Data Pipe Control Functions@{Data Pipe Control Functions}!nrf24l01\_data\_pipe\_address@{nrf24l01\_data\_pipe\_address}}
+\index{nrf24l01\_data\_pipe\_address@{nrf24l01\_data\_pipe\_address}!Data Pipe Control Functions@{Data Pipe Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_data\_pipe\_address()}{nrf24l01\_data\_pipe\_address()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga236d8daf002dce8ad435c162a6fd5474} 
+uint8\+\_\+t nrf24l01\+\_\+data\+\_\+pipe\+\_\+address (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+number}{, }\item[{uint8\+\_\+t \texorpdfstring{$\ast$}{*}}]{address}{, }\item[{uint8\+\_\+t}]{length}{}\end{DoxyParamCaption})}
+
+
+
+Set receive address for specific data pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em pipe\+\_\+number} & Data pipe number (0-\/5) \\
+\hline
+{\em address} & Pointer to address bytes \\
+\hline
+{\em length} & Address length in bytes (3-\/5) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Sets the receive address for the specified data pipe.
+
+\begin{DoxyNote}{Note}
+Pipes 0 and 1 use full address length, pipes 2-\/5 use only LSB (the remaining bytes are shared with pipe 1). 
+\end{DoxyNote}
+\Hypertarget{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga19f14a73daca5f37d2f82f07972bbecc}\index{Data Pipe Control Functions@{Data Pipe Control Functions}!nrf24l01\_data\_pipe\_auto\_ack@{nrf24l01\_data\_pipe\_auto\_ack}}
+\index{nrf24l01\_data\_pipe\_auto\_ack@{nrf24l01\_data\_pipe\_auto\_ack}!Data Pipe Control Functions@{Data Pipe Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_data\_pipe\_auto\_ack()}{nrf24l01\_data\_pipe\_auto\_ack()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga19f14a73daca5f37d2f82f07972bbecc} 
+uint8\+\_\+t nrf24l01\+\_\+data\+\_\+pipe\+\_\+auto\+\_\+ack (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+number}{, }\item[{uint8\+\_\+t}]{enable}{}\end{DoxyParamCaption})}
+
+
+
+Enable/disable auto-\/acknowledgment for specific pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em pipe\+\_\+number} & Data pipe number (0-\/5) \\
+\hline
+{\em enable} & 1 to enable, 0 to disable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Enables or disables automatic acknowledgment for the specified data pipe. \Hypertarget{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga7f87827b095916e98b7e40b95faf0437}\index{Data Pipe Control Functions@{Data Pipe Control Functions}!nrf24l01\_data\_pipe\_dynamic\_payload\_length@{nrf24l01\_data\_pipe\_dynamic\_payload\_length}}
+\index{nrf24l01\_data\_pipe\_dynamic\_payload\_length@{nrf24l01\_data\_pipe\_dynamic\_payload\_length}!Data Pipe Control Functions@{Data Pipe Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_data\_pipe\_dynamic\_payload\_length()}{nrf24l01\_data\_pipe\_dynamic\_payload\_length()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_ga7f87827b095916e98b7e40b95faf0437} 
+uint8\+\_\+t nrf24l01\+\_\+data\+\_\+pipe\+\_\+dynamic\+\_\+payload\+\_\+length (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+number}{, }\item[{uint8\+\_\+t}]{enable}{}\end{DoxyParamCaption})}
+
+
+
+Enable/disable dynamic payload length for specific pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em pipe\+\_\+number} & Data pipe number (0-\/5) \\
+\hline
+{\em enable} & 1 to enable, 0 to disable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Enables or disables dynamic payload length for the specified data pipe. Global dynamic payload length must also be enabled. \Hypertarget{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gae689b3cc45f5fc87c9ab5e5fde30386c}\index{Data Pipe Control Functions@{Data Pipe Control Functions}!nrf24l01\_data\_pipe\_enable@{nrf24l01\_data\_pipe\_enable}}
+\index{nrf24l01\_data\_pipe\_enable@{nrf24l01\_data\_pipe\_enable}!Data Pipe Control Functions@{Data Pipe Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_data\_pipe\_enable()}{nrf24l01\_data\_pipe\_enable()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gae689b3cc45f5fc87c9ab5e5fde30386c} 
+uint8\+\_\+t nrf24l01\+\_\+data\+\_\+pipe\+\_\+enable (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+number}{, }\item[{uint8\+\_\+t}]{enable}{}\end{DoxyParamCaption})}
+
+
+
+Enable/disable specific data pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em pipe\+\_\+number} & Data pipe number (0-\/5) \\
+\hline
+{\em enable} & 1 to enable, 0 to disable \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Enables or disables reception on the specified data pipe. \Hypertarget{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gaa4f2b1843d94a7c0ca7019fe72b5412d}\index{Data Pipe Control Functions@{Data Pipe Control Functions}!nrf24l01\_data\_pipe\_payload\_width@{nrf24l01\_data\_pipe\_payload\_width}}
+\index{nrf24l01\_data\_pipe\_payload\_width@{nrf24l01\_data\_pipe\_payload\_width}!Data Pipe Control Functions@{Data Pipe Control Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_data\_pipe\_payload\_width()}{nrf24l01\_data\_pipe\_payload\_width()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___p_i_p_e___c_o_n_t_r_o_l_gaa4f2b1843d94a7c0ca7019fe72b5412d} 
+uint8\+\_\+t nrf24l01\+\_\+data\+\_\+pipe\+\_\+payload\+\_\+width (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{, }\item[{uint8\+\_\+t}]{pipe\+\_\+number}{, }\item[{uint8\+\_\+t}]{width}{}\end{DoxyParamCaption})}
+
+
+
+Set payload width for specific data pipe. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+{\em pipe\+\_\+number} & Data pipe number (0-\/5) \\
+\hline
+{\em width} & Payload width in bytes (1-\/32) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 on success, non-\/zero on error
+\end{DoxyReturn}
+Sets the expected payload width for the specified data pipe. Only used when dynamic payload length is disabled.
+
+\begin{DoxyNote}{Note}
+Setting width to 0 disables the pipe 
+\end{DoxyNote}

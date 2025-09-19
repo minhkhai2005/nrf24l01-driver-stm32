@@ -1,0 +1,61 @@
+\doxysubsection{Advanced Feature Functions }
+\hypertarget{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s}{}\label{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s}\index{Advanced Feature Functions@{Advanced Feature Functions}}
+
+
+Functions for advanced n\+RF24\+L01 features.  
+
+
+\doxysubsubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_ga3fbb42aa6b96abf320f6b7598a3f0a1d}{nrf24l01\+\_\+activate\+\_\+extra\+\_\+features}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em Activate extra features. \end{DoxyCompactList}\item 
+uint8\+\_\+t \mbox{\hyperlink{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_ga6b1c1bd9599bd9069d4617da30705ed3}{nrf24l01\+\_\+nop}} (\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}device)
+\begin{DoxyCompactList}\small\item\em No operation command. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsubsection{Detailed Description}
+Functions for advanced n\+RF24\+L01 features. 
+
+
+
+\label{doc-func-members}
+\Hypertarget{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_doc-func-members}
+\doxysubsubsection{Function Documentation}
+\Hypertarget{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_ga3fbb42aa6b96abf320f6b7598a3f0a1d}\index{Advanced Feature Functions@{Advanced Feature Functions}!nrf24l01\_activate\_extra\_features@{nrf24l01\_activate\_extra\_features}}
+\index{nrf24l01\_activate\_extra\_features@{nrf24l01\_activate\_extra\_features}!Advanced Feature Functions@{Advanced Feature Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_activate\_extra\_features()}{nrf24l01\_activate\_extra\_features()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_ga3fbb42aa6b96abf320f6b7598a3f0a1d} 
+uint8\+\_\+t nrf24l01\+\_\+activate\+\_\+extra\+\_\+features (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+Activate extra features. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value
+\end{DoxyReturn}
+Activates advanced features like dynamic payload length, payload with ACK, and dynamic ACK features. \Hypertarget{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_ga6b1c1bd9599bd9069d4617da30705ed3}\index{Advanced Feature Functions@{Advanced Feature Functions}!nrf24l01\_nop@{nrf24l01\_nop}}
+\index{nrf24l01\_nop@{nrf24l01\_nop}!Advanced Feature Functions@{Advanced Feature Functions}}
+\doxysubsubsubsection{\texorpdfstring{nrf24l01\_nop()}{nrf24l01\_nop()}}
+{\footnotesize\ttfamily \label{group___n_r_f24_l01___a_d_v_a_n_c_e_d___f_e_a_t_u_r_e_s_ga6b1c1bd9599bd9069d4617da30705ed3} 
+uint8\+\_\+t nrf24l01\+\_\+nop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structnrf24l01__device}{nrf24l01\+\_\+device}} \texorpdfstring{$\ast$}{*}}]{device}{}\end{DoxyParamCaption})}
+
+
+
+No operation command. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em device} & Pointer to device configuration structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Status register value
+\end{DoxyReturn}
+Sends NOP command, useful for reading status register without performing any other operation. 
