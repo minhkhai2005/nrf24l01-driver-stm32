@@ -43,27 +43,7 @@ This repository provides a lightweight and efficient C driver for interfacing ST
 
 ### Usage Example
 
-```c
-#include "nrf24l01.h"
-
-// Initialize SPI and GPIO peripherals first
-
-nrf24_init(&hspi1, CE_GPIO_Port, CE_Pin, CSN_GPIO_Port, CSN_Pin);
-
-nrf24_config(2, 32); // Set channel and payload
-
-nrf24_tx_mode(my_address, 32);
-nrf24_send(data_buffer);
-```
-
-## API Reference
-
-- `nrf24_init()`: Initialize the driver with SPI and GPIO handles
-- `nrf24_config(channel, payload_len)`: Configure radio parameters
-- `nrf24_tx_mode(address, length)`: Set TX mode
-- `nrf24_rx_mode(address, length)`: Set RX mode
-- `nrf24_send(buffer)`: Transmit data
-- `nrf24_receive(buffer)`: Receive data
+Visit https://minhkhai2005.github.io/nrf24l01-driver-stm32/index.html for more information
 
 ## License
 
