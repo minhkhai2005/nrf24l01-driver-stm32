@@ -675,7 +675,7 @@ uint8_t nrf24l01_data_pipe_auto_ack(nrf24l01_device * device, uint8_t pipe_numbe
 
   return 0;
 }
-extern UART_HandleTypeDef huart1;
+
 uint8_t nrf24l01_data_pipe_address(nrf24l01_device * device, uint8_t pipe_number, uint8_t * address, uint8_t length){
   if (pipe_number > 5) return -1; // invalid pipe number
   else if ( (length > 1 && pipe_number > 1) || (length < 3 && pipe_number <= 1) ) return -1; // invalid address length
