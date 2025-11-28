@@ -344,7 +344,6 @@ uint8_t nrf24l01_read_rx_payload(nrf24l01_device * device, uint8_t* data, uint16
   uint8_t config_register = 0, status_register = 0;
   if (device == NULL) return -1;
   nrf24l01_read_register(device, CONFIG, &config_register, 1);
-  if (!(config_register & PWR_UP && config_register & PRIM_RX && HAL_GPIO_ReadPin(device->ce_port, device->ce_pin))) return -1; // invalid mode
   if (length < 1 || length > 32) return -1; // invalid payload length
   if (data == NULL) return  -1; // invalid pointer
 
