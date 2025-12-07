@@ -403,9 +403,6 @@ uint8_t nrf24l01_flush_rx(nrf24l01_device * device)
   uint8_t config_register = 0, status_register = 0;
   if (device == NULL) return -1;
   nrf24l01_read_register(device, CONFIG, &config_register, 1);
-
-  if (!(config_register & PWR_UP && config_register & PRIM_RX && HAL_GPIO_ReadPin(device->ce_port, device->ce_pin))) return -1; // invalid mode
-
   status_register = nrf24l01_send_command(device, FLUSH_RX);
 
   return status_register;
